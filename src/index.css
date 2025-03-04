@@ -1,3 +1,6 @@
+/* Import centralized style files */
+@import './styles/animations.css';
+
 @font-face {
   font-family: 'Letter Magic';
   src: url('/typos/letter_magic/letter_magic.ttf') format('truetype');
@@ -88,9 +91,6 @@
     color: var(--color-primary);
   }
 }
-
-/* Import centralized style files */
-@import './styles/animations.css';
 
 /* Animation styles */
 @keyframes gradient {
