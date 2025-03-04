@@ -1,0 +1,16 @@
+.youtube-iframe {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .youtube-iframe {
+        width: 450%;
+    }
+}

@@ -1,0 +1,75 @@
+/* Card styles */
+
+/* Artist card */
+.artist-card {
+  @apply relative bg-background/50 transition-all duration-300;
+  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
+              0 0 20px rgba(var(--color-primary-rgb), 0.1),
+              0 0 30px rgba(var(--color-primary-rgb), 0.05);
+}
+
+.artist-card:hover {
+  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
+              0 0 30px rgba(var(--color-primary-rgb), 0.2),
+              0 0 45px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.artist-dialog {
+  box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.3),
+              0 0 40px rgba(var(--color-primary-rgb), 0.2),
+              0 0 60px rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Ticket card */
+.ticket-card {
+  @apply relative transition-all duration-300;
+  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
+              0 0 20px rgba(var(--color-primary-rgb), 0.1),
+              0 0 30px rgba(var(--color-primary-rgb), 0.05);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+}
+
+.ticket-card:hover {
+  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
+              0 0 30px rgba(var(--color-primary-rgb), 0.2),
+              0 0 45px rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* FAQ card */
+.faq-card {
+  @apply relative transition-all duration-300;
+  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.1),
+              0 0 20px rgba(var(--color-primary-rgb), 0.05);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+}
+
+.faq-card:hover {
+  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.2),
+              0 0 30px rgba(var(--color-primary-rgb), 0.1),
+              0 0 45px rgba(var(--color-primary-rgb), 0.05);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+}
+
+.faq-contact-card {
+  box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.15),
+              0 0 40px rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+}
+
+/* Shop card */
+.shop-card {
+  @apply relative bg-background/50 transition-all duration-300;
+  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
+              0 0 20px rgba(var(--color-primary-rgb), 0.1),
+              0 0 30px rgba(var(--color-primary-rgb), 0.05);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+}
+
+.shop-card:hover {
+  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
+              0 0 30px rgba(var(--color-primary-rgb), 0.2),
+              0 0 45px rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+}

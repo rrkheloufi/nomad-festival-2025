@@ -1,0 +1,72 @@
+/* Typography styles */
+
+/* Base text styles */
+.text-base {
+  @apply font-brixton text-text leading-relaxed;
+}
+
+/* Heading styles */
+.heading {
+  @apply font-magic text-primary;
+  text-shadow: 0 0 5px rgba(165, 30, 37, 0.3),
+               0 0 10px rgba(165, 30, 37, 0.2),
+               0 0 15px rgba(165, 30, 37, 0.1);
+}
+
+.heading-1 {
+  @apply heading text-4xl md:text-5xl font-bold mb-8;
+}
+
+.heading-2 {
+  @apply heading text-2xl md:text-3xl font-bold mb-6;
+}
+
+.heading-3 {
+  @apply heading text-xl md:text-2xl font-bold mb-4;
+}
+
+.heading-4 {
+  @apply heading text-lg md:text-xl font-bold mb-3;
+}
+
+/* Subtitle styles */
+.subtitle {
+  @apply text-lg md:text-xl font-brixton font-medium text-accent mb-4;
+}
+
+/* Paragraph styles */
+.paragraph {
+  @apply text-base md:text-lg font-brixton text-text leading-relaxed mb-4;
+}
+
+/* Card title styles */
+.card-title {
+  @apply text-xl font-bold text-primary mb-2;
+}
+
+/* Section title with glow effect */
+.section-title {
+  @apply text-4xl md:text-5xl font-bold mb-8 text-center font-magic text-primary;
+  text-shadow: 0 0 10px rgba(165, 30, 37, 0.5),
+               0 0 20px rgba(165, 30, 37, 0.3),
+               0 0 30px rgba(165, 30, 37, 0.1);
+}
+
+/* Glow effect for text */
+.text-glow {
+  text-shadow: 0 0 10px rgba(165, 30, 37, 0.5),
+               0 0 20px rgba(165, 30, 37, 0.3),
+               0 0 30px rgba(165, 30, 37, 0.1);
+}
+
+/* Navigation link */
+.nav-link {
+  @apply px-4 py-2 text-text hover:text-primary transition-colors duration-300;
+  font-family: 'Brixton', sans-serif;
+  font-weight: 500;
+}
+
+/* Primary button */
+.btn-primary {
+  @apply px-6 py-3 bg-primary text-light rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 font-brixton;
+}
