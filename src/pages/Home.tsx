@@ -166,7 +166,7 @@ export default function Home() {
         {/* Scrolling Artist Banner */}
         <div
           className="w-full bg-black/40 backdrop-blur-sm py-6 overflow-hidden"
-          style={{ backgroundColor: "rgba(var(--color-background-rgb), 0.3)" }}
+          style={{ backgroundColor: "rgba(var(--color-background-rgb), 0.2)" }}
         >
           <div className="marquee-container">
             <motion.div
