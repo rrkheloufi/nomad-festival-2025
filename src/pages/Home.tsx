@@ -1,8 +1,21 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import "../styles/Home.css";
 import { Button } from "../components/Button";
-import { motion } from "framer-motion";
+import "../styles/Home.css";
+
+const artists = [
+  "M41H14",
+  "Glenn B",
+  "Limace",
+  "SansChaise VS Arthychoc",
+  "Harry & Emma",
+  "Clément Serra",
+  "Morfalous",
+  "The Couch Sleepers",
+  "Marc Hazan",
+  "Pierre Albarn",
+];
 
 export default function Home() {
   const [ref, inView] = useInView({
@@ -40,13 +53,19 @@ export default function Home() {
     };
   }, []);
 
+  // Calculate the width of the artist banner
+  const artistsString = [...artists, ...artists].join("     •     ");
+
   return (
     <div className="relative min-h-screen">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
         {!videoError ? (
           <div
-            className={`relative w-full h-full transition-opacity duration-1000 ${showVideo ? 'opacity-100' : 'opacity-0'}`}>
+            className={`relative w-full h-full transition-opacity duration-1000 ${
+              showVideo ? "opacity-100" : "opacity-0"
+            }`}
+          >
             <iframe
               src="https://www.youtube.com/embed/gsqQazFtUl0?controls=0&autoplay=1&mute=1&loop=1&playlist=gsqQazFtUl0&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
               title="Festival Background Video"
@@ -60,29 +79,36 @@ export default function Home() {
       </div>
 
       {/* Content Overlay */}
-      <div className="relative min-h-screen flex items-center justify-center bg-black bg-opacity-60">
+      <div className="relative min-h-screen flex flex-col items-center justify-center bg-black bg-opacity-60">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center px-4"
+          className="text-center px-4 flex-grow flex flex-col items-center justify-center"
         >
           <motion.div
-            className={`relative w-64 h-64 md:w-96 md:h-96 mx-auto transition-opacity duration-1000 ${showLogo ? 'opacity-100' : 'opacity-0'}`}
+            className={`relative w-64 h-64 md:w-96 md:h-96 mx-auto transition-opacity duration-1000 ${
+              showLogo ? "opacity-100" : "opacity-0"
+            }`}
             animate={{
               opacity: [0, 1, 1, 1],
               transition: {
                 times: [0, 0.1, 0.5, 1],
                 duration: 4,
-                delay: 1.5
-              }
+                delay: 1.5,
+              },
+            }}
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              paddingBottom: 50,
             }}
           >
             <motion.img
               src="/logos/logo_nomad.png"
               alt="Nomad Festival"
-              className="w-full h-full object-contain"
+              className="object-contain"
               style={{
                 filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))",
               }}
@@ -90,29 +116,72 @@ export default function Home() {
                 filter: [
                   "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))",
                   "drop-shadow(0 0 30px rgba(255, 255, 255, 0.5))",
-                  "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))"
-                ]
+                  "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))",
+                ],
               }}
               transition={{
                 duration: 5,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             />
           </motion.div>
+
+          <motion.h2
+            className="text-2xl md:text-4xl text-white font-bold mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.2 }}
+          >
+            Venez passer le meilleur week-end de l'été !
+          </motion.h2>
+
+          <motion.p
+            className="text-xl md:text-2xl text-white mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.5 }}
+          >
+            22 - 24 août 2025
+          </motion.p>
+
           <motion.div
             className="mt-8 flex justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
+            transition={{ delay: 2.7 }}
           >
-            <a href="https://www.google.fr" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.google.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="primary" size="lg">
                 Réserver vos billets
               </Button>
             </a>
           </motion.div>
         </motion.div>
+
+        {/* Scrolling Artist Banner */}
+        <div
+          className="w-full bg-black/40 backdrop-blur-sm py-6 overflow-hidden"
+          style={{ backgroundColor: "rgba(var(--color-background-rgb), 0.3)" }}
+        >
+          <div className="marquee-container">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2 }}
+            >
+              <div className="marquee-content">
+                <span className="text-2xl md:text-3xl text-white font-magic tracking-wider">
+                  {artistsString}
+                </span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

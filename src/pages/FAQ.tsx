@@ -40,7 +40,7 @@ const faqs = [
   {
     question: "Qu'est-ce que je dois apporter ?",
     answer: (
-      <ul className="list-disc pl-4 space-y-1">
+      <ul className="list-disc pl-4 space-y-2 text-lg">
         <li>Couverts pour éviter les déchets</li>
         <li>Une gourde</li>
         <li>Maillot de bain pour se doucher</li>
@@ -103,13 +103,13 @@ export default function FAQ() {
                       />
                     </Disclosure.Button>
                     <Disclosure.Panel
-                      className="px-8 py-6 text-light"
+                      className="px-8 py-6 text-light text-lg"
                       style={{
                         backgroundColor: "var(--color-background)",
                       }}
                     >
                       <div
-                        className="prose prose-lg prose-invert max-w-none"
+                        className="prose prose-xl prose-invert max-w-none leading-relaxed"
                         style={{
                           color: "var(--color-text)",
                         }}
@@ -132,7 +132,7 @@ export default function FAQ() {
             <h2 className="text-2xl font-bold text-primary mb-4">
               Tu n'as pas trouvé ta réponse ?
             </h2>
-            <p className="text-festival-light mb-4">
+            <p className="text-festival-light text-lg mb-4">
               Contacte-nous par email à :
               <a
                 href="mailto:nomad.festivalfr@gmail.com"

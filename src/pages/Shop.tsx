@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { Button } from '../components/Button';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Button } from "../components/Button";
 
 interface Product {
   id: number;
@@ -13,33 +13,33 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
-    name: 'T-shirt Blanc Regular',
-    price: '30€',
-    description: 'T-shirt officiel du Nomad Festival en coton bio',
+    name: "T-shirt Blanc Regular",
+    price: "30€",
+    description: "T-shirt officiel du Nomad Festival en coton bio",
     images: [
-      '/shop/white_tshirt/1.JPG',
-      '/shop/white_tshirt/2.JPG',
-      '/shop/white_tshirt/3.JPG',
-      '/shop/white_tshirt/4.png'
-    ]
+      "/shop/white_tshirt/1.JPG",
+      "/shop/white_tshirt/2.JPG",
+      "/shop/white_tshirt/3.JPG",
+      "/shop/white_tshirt/4.png",
+    ],
   },
   {
     id: 2,
-    name: 'T-shirt Bleu Loose',
-    price: '30€',
-    description: 'T-shirt loose aux couleurs du festival',
-    images: [
-      '/shop/hat/1.JPG',
-      '/shop/hat/2.JPG',
-      '/shop/hat/3.JPG'
-    ]
-  }
+    name: "T-shirt Bleu Loose",
+    price: "30€",
+    description: "T-shirt loose aux couleurs du festival",
+    images: ["/shop/hat/1.JPG", "/shop/hat/2.JPG", "/shop/hat/3.JPG"],
+  },
 ];
 
 export default function Shop() {
-  const [currentImageIndexes, setCurrentImageIndexes] = useState<Record<number, number>>({});
+  const [currentImageIndexes, setCurrentImageIndexes] = useState<
+    Record<number, number>
+  >({});
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
-  const [fullscreenProduct, setFullscreenProduct] = useState<Product | null>(null);
+  const [fullscreenProduct, setFullscreenProduct] = useState<Product | null>(
+    null
+  );
 
   const handleNextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -53,7 +53,9 @@ export default function Shop() {
     e.stopPropagation();
     if (!fullscreenProduct || !fullscreenImage) return;
     const currentIndex = fullscreenProduct.images.indexOf(fullscreenImage);
-    const prevIndex = (currentIndex - 1 + fullscreenProduct.images.length) % fullscreenProduct.images.length;
+    const prevIndex =
+      (currentIndex - 1 + fullscreenProduct.images.length) %
+      fullscreenProduct.images.length;
     setFullscreenImage(fullscreenProduct.images[prevIndex]);
   };
 
@@ -66,7 +68,7 @@ export default function Shop() {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const width = rect.width;
-    
+
     if (x < width / 2) {
       handlePrevImage(e);
     } else {
@@ -77,14 +79,14 @@ export default function Shop() {
   return (
     <div className="min-h-screen pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h1 
+        <motion.h1
           className="text-4xl font-bold text-festival-primary mb-8 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
           Boutique
         </motion.h1>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => {
             const currentIndex = currentImageIndexes[product.id] || 0;
@@ -100,18 +102,27 @@ export default function Shop() {
                     src={product.images[currentIndex]}
                     alt={product.name}
                     className="w-full h-full object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105"
-                    onClick={() => handleThumbnailClick(product, product.images[currentIndex])}
+                    onClick={() =>
+                      handleThumbnailClick(
+                        product,
+                        product.images[currentIndex]
+                      )
+                    }
                     loading="lazy"
                   />
-                  
+
                   {product.images.length > 1 && (
                     <>
                       <button
                         onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
-                          setCurrentImageIndexes(prev => ({
+                          setCurrentImageIndexes((prev) => ({
                             ...prev,
-                            [product.id]: ((prev[product.id] || 0) - 1 + product.images.length) % product.images.length
+                            [product.id]:
+                              ((prev[product.id] || 0) -
+                                1 +
+                                product.images.length) %
+                              product.images.length,
                           }));
                         }}
                         className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
@@ -121,9 +132,11 @@ export default function Shop() {
                       <button
                         onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
-                          setCurrentImageIndexes(prev => ({
+                          setCurrentImageIndexes((prev) => ({
                             ...prev,
-                            [product.id]: ((prev[product.id] || 0) + 1) % product.images.length
+                            [product.id]:
+                              ((prev[product.id] || 0) + 1) %
+                              product.images.length,
                           }));
                         }}
                         className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
@@ -137,10 +150,15 @@ export default function Shop() {
                     <h6 className="text-1xl font-bold text-white mb-2 drop-shadow-glow">
                       {product.name}
                     </h6>
-                    <p className="text-xs mb-4" style={{ color: 'var(--color-light)' }}>
+                    <p
+                      className="text-xs mb-4"
+                      style={{ color: "var(--color-light)" }}
+                    >
                       {product.description}
                     </p>
-                    <h6 className="text-lg md:text-2xl font-bold text-festival-light">{product.price}</h6>
+                    <h6 className="text-lg md:text-2xl font-bold text-festival-light">
+                      {product.price}
+                    </h6>
                   </div>
                 </div>
               </motion.div>
@@ -149,7 +167,7 @@ export default function Shop() {
         </div>
 
         {fullscreenImage && fullscreenProduct && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -160,10 +178,7 @@ export default function Shop() {
             }}
           >
             <div className="relative max-w-4xl w-full">
-              <div 
-                className="cursor-pointer"
-                onClick={handleImageAreaClick}
-              >
+              <div className="cursor-pointer" onClick={handleImageAreaClick}>
                 <img
                   src={fullscreenImage}
                   alt="Vue agrandie"
@@ -171,7 +186,7 @@ export default function Shop() {
                   loading="lazy"
                 />
               </div>
-              
+
               {fullscreenProduct.images.length > 1 && (
                 <>
                   <button
@@ -198,7 +213,9 @@ export default function Shop() {
                       setFullscreenImage(image);
                     }}
                     className={`w-16 h-16 rounded-lg overflow-hidden transition-transform ${
-                      fullscreenImage === image ? 'ring-2 ring-primary scale-110' : 'opacity-50 hover:opacity-100'
+                      fullscreenImage === image
+                        ? "ring-2 ring-primary scale-110"
+                        : "opacity-50 hover:opacity-100"
                     }`}
                   >
                     <img
@@ -225,17 +242,17 @@ export default function Shop() {
         )}
 
         <div className="flex justify-center">
-              <a
-                href="https://www.google.fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block my-12"
-              >
-                <Button variant="primary" size="lg" className="mx-auto">
-                Commander
-                </Button>
-              </a>
-          </div>
+          <a
+            href="https://www.google.fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block my-12"
+          >
+            <Button variant="primary" size="lg" className="mx-auto">
+              Commander
+            </Button>
+          </a>
+        </div>
       </div>
     </div>
   );

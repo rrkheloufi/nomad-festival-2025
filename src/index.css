@@ -86,7 +86,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-    h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-magic;
     color: var(--color-primary);
   }
@@ -220,8 +220,8 @@
   }
 }
 
-.paragraph {
-  font-size: 1rem;
+.paragraph, p, li {
+  font-size: 1.2rem !important;
   line-height: 1.5;
   font-family: 'Brixton', sans-serif;
   color: var(--color-text);

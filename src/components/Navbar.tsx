@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { ThemeToggle } from './ThemeToggle';
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface MenuItem {
   name: string;
@@ -18,34 +18,40 @@ export function Navbar() {
 
   const menuItems: MenuItem[] = [
     {
-      name: 'Festival 2025',
+      name: "Festival 2025",
       submenu: [
-        { name: 'Programmation', path: '/program' },
-        { name: 'Billetterie', path: '/tickets' },
-        { name: 'FAQ', path: '/faq' },
+        { name: "Programmation", path: "/program" },
+        { name: "Billetterie", path: "/tickets" },
+        { name: "FAQ", path: "/faq" },
       ],
     },
-    { name: 'Boutique', path: '/shop' },
-    { name: 'Présentation', path: '/about' },
+    { name: "Boutique", path: "/shop" },
+    { name: "Présentation", path: "/about" },
     {
-      name: 'Éditions précédentes',
+      name: "Éditions précédentes",
       submenu: [
-        { name: 'Nomad 2024', path: '/editions/2024' },
-        { name: 'Nomad 2023', path: '/editions/2023' },
+        { name: "Nomad 2024", path: "/editions/2024" },
+        { name: "Nomad 2023", path: "/editions/2023" },
       ],
     },
-    { name: 'Contact', path: '/contact' },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <nav className="fixed w-full z-50 transition-colors" style={{ backgroundColor: 'rgba(var(--color-background-rgb), 0.9)', backdropFilter: 'blur(8px)' }}>
+    <nav
+      className="fixed w-full z-50 transition-colors"
+      style={{
+        backgroundColor: "rgba(var(--color-background-rgb), 0.9)",
+        backdropFilter: "blur(8px)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16">
           {/* Home Link (N) */}
           <Link to="/" className="transition-colors">
             <motion.span
               className="font-magic text-3xl hover:text-primary"
-              style={{ color: 'var(--color-text)' }}
+              style={{ color: "var(--color-text)" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
@@ -69,8 +75,14 @@ export function Navbar() {
                     </div>
                   )}
                   {item.submenu && (
-                    <div className="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-48 rounded-md shadow-lg py-1 mt-2" 
-                      style={{ backgroundColor: 'rgba(var(--color-background-rgb), 0.9)', backdropFilter: 'blur(8px)' }}>
+                    <div
+                      className="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-48 rounded-md shadow-lg py-1 mt-2"
+                      style={{
+                        backgroundColor:
+                          "rgba(var(--color-background-rgb), 0.9)",
+                        backdropFilter: "blur(8px)",
+                      }}
+                    >
                       {item.submenu.map((subItem) => (
                         <Link
                           key={subItem.name}
@@ -97,7 +109,7 @@ export function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
-              style={{ color: 'var(--color-text)' }}
+              style={{ color: "var(--color-text)" }}
             >
               {isOpen ? (
                 <XMarkIcon className="block h-6 w-6" />
