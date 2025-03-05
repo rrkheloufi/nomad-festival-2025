@@ -108,14 +108,14 @@ export default function FAQ() {
                         backgroundColor: "var(--color-background)",
                       }}
                     >
-                      <div
+                      <strong
                         className="prose prose-xl prose-invert max-w-none leading-relaxed"
                         style={{
                           color: "var(--color-text)",
                         }}
                       >
                         {faq.answer}
-                      </div>
+                      </strong>
                     </Disclosure.Panel>
                   </motion.div>
                 )}

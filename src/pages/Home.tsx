@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { Button } from "../components/Button";
 import "../styles/Home.css";
 
-const artists = [
+const initialArtists = [
   "M41H14",
   "Glenn B",
   "Limace",
@@ -26,8 +26,13 @@ export default function Home() {
   const [videoError, setVideoError] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showLogo, setShowLogo] = useState(false);
+  const [artists, setArtists] = useState<string[]>([]);
 
   useEffect(() => {
+    // Shuffle artists array
+    const shuffledArtists = [...initialArtists].sort(() => Math.random() - 0.5);
+    setArtists(shuffledArtists);
+
     // Show logo after 1.5 seconds
     const logoTimer = setTimeout(() => {
       setShowLogo(true);
@@ -102,7 +107,7 @@ export default function Home() {
             style={{
               display: "flex",
               alignItems: "flex-end",
-              paddingBottom: 50,
+              paddingBottom: 20,
             }}
           >
             <motion.img
@@ -127,29 +132,32 @@ export default function Home() {
             />
           </motion.div>
 
+          <motion.h3
+            className="text-xl md:text-3xl text-white font-bold mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.5 }}
+            style={{
+              paddingBottom: 30,
+            }}
+          >
+            Du 22 au 24 août à Larbey
+          </motion.h3>
+
           <motion.h2
             className="text-2xl md:text-4xl text-white font-bold mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2.2 }}
+            transition={{ delay: 3.5 }}
           >
             Venez passer le meilleur week-end de l'été !
           </motion.h2>
 
-          <motion.p
-            className="text-xl md:text-2xl text-white mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.5 }}
-          >
-            22 - 24 août 2025
-          </motion.p>
-
           <motion.div
-            className="mt-8 flex justify-center"
+            className="mt-2 flex justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2.7 }}
+            transition={{ delay: 3.5 }}
           >
             <a
               href="https://www.google.fr"
@@ -172,7 +180,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 2 }}
+              transition={{ delay: 0.5 }}
             >
               <div className="marquee-content">
                 <span className="text-2xl md:text-3xl text-white font-magic tracking-wider">

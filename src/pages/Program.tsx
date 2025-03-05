@@ -155,7 +155,7 @@ export default function Program() {
                     </p>
 
                     {(artist.spotify || artist.youtube) && (
-                      <div className="flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="flex space-x-4">
                         {artist.spotify && (
                           <a
                             href={artist.spotify}

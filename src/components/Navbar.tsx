@@ -26,7 +26,7 @@ export function Navbar() {
       ],
     },
     { name: "Boutique", path: "/shop" },
-    { name: "Présentation", path: "/about" },
+    { name: "Association", path: "/about" },
     {
       name: "Éditions précédentes",
       submenu: [
