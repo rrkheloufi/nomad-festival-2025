@@ -2,6 +2,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 import { ThemeToggle } from "./ThemeToggle";
 
 interface MenuItem {
@@ -15,6 +16,7 @@ interface MenuItem {
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { themeMode } = useTheme();
 
   const menuItems: MenuItem[] = [
     {
@@ -47,17 +49,17 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16">
-          {/* Home Link (N) */}
           <Link to="/" className="transition-colors">
-            <motion.span
-              className="font-magic text-3xl hover:text-primary"
+            <motion.img
+              src={
+                themeMode === "dark"
+                  ? "/logos/logo_navbar_dark.svg"
+                  : "/logos/logo_navbar_light.svg"
+              }
+              alt="Nomad Festival"
+              className="h-7"
               style={{ color: "var(--color-text)" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              N
-            </motion.span>
+            />
           </Link>
 
           {/* Desktop Menu */}
