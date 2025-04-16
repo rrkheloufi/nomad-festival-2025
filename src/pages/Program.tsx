@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SocialLinks from "../components/SocialLinks";
 
 interface Artist {
@@ -47,7 +47,7 @@ export const artists: Artist[] = [
     youtube: "https://www.youtube.com/@solaal_music",
     deezer: "https://www.deezer.com/fr/artist/300766041",
     description:
-      "solaal a commencé en jouant de la guitare et de la basse dans des groupes de rock et métal.\n\nAujourd'hui, il mélange ses origines rock avec des instrumentales de musique électronique et du rap pour créer un mélange aux influences new wave.\n\nÀ travers ses compositions, il parle de ses objectifs et regrets sur des instrumentales rythmées, agrémentées de quelques riffs de guitare pour régaler ses amis métalleux.",
+      "Solaal a commencé en jouant de la guitare et de la basse dans des groupes de rock et métal.\n\nAujourd'hui, il mélange ses origines rock avec des instrumentales de musique électronique et du rap pour créer un mélange aux influences new wave.\n\nÀ travers ses compositions, il parle de ses objectifs et regrets sur des instrumentales rythmées, agrémentées de quelques riffs de guitare pour régaler ses amis métalleux.",
   },
   {
     name: "Zita Nova",
@@ -106,6 +106,20 @@ export const artists: Artist[] = [
 
 export default function Program() {
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
+
+  // Effet pour empêcher le scroll quand la modal est ouverte
+  useEffect(() => {
+    if (selectedArtist) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup lors du démontage du composant
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedArtist]);
 
   return (
     <div className="min-h-screen pt-20 pb-10">

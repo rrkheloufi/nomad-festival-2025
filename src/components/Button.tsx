@@ -34,7 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Base styles
     const baseStyles =
-      "font-brixton rounded-lg transition-all duration-300 flex items-center justify-center";
+      "font-brixton font-bold rounded-lg transition-all duration-300 flex items-center justify-center";
 
     // Size styles
     const sizeStyles = {

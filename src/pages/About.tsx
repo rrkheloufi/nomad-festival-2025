@@ -22,7 +22,7 @@ export default function About() {
               <h2 className="text-2xl font-bold text-festival-primary mb-4">
                 Qui sommes-nous ?
               </h2>
-              <p className="text-xl">
+              <p className="text-xl mb-4">
                 Un groupe d'ami.es qui se sont pris au jeu d'organiser des
                 concerts et un festival de musique et d'art pendant la période
                 estivale.
@@ -47,47 +47,69 @@ export default function About() {
               </p>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold text-festival-primary mb-4">
-                Nos activités
-              </h2>
-              <ul className="list-disc pl-6 space-y-2 text-xl">
-                <li>
-                  Un festival de musique une fois par an qui réunit de nombreux
-                  artistes.
-                </li>
-                <li>Des concerts ouverts au public au cours de l'année.</li>
-              </ul>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+              <div className="lg:col-span-7 flex flex-col justify-center">
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-festival-primary mb-4">
+                    Nos activités
+                  </h2>
+                  <ul className="list-disc pl-6 space-y-2 text-xl">
+                    <li>
+                      Un festival de musique une fois par an qui réunit de
+                      nombreux artistes.
+                    </li>
+                    <li>Des concerts ouverts au public au cours de l'année.</li>
+                  </ul>
+                </div>
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-festival-primary mb-4">
+                    Le Festival
+                  </h2>
+                  <p className="text-xl">
+                    Déjà devenu pour certain.es le rendez-vous estival dédié à
+                    la musique. Le Nomad c'est 48h de concerts, d'exposition, de
+                    jeux et d'animations. Mais aussi un camping sur le site, des
+                    repas et un bar pour se restaurer.
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-festival-primary mb-4">
+                    Membres du Bureau
+                  </h2>
+                  <ul className="list-disc pl-6 space-y-2 text-xl">
+                    <li>Lisa Fericelli – Présidente – Pôle communication</li>
+                    <li>
+                      Simon Griffault – Vice-président – Pôle artiste et
+                      animation
+                    </li>
+                    <li>Juliette Nossit – Secrétaire – Pôle logistique</li>
+                    <li>Yanis Dali-Yahia – Trésorier – Pôle artiste et F&B</li>
+                    <li>Théo Laffenêtre – Direction artistique</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 flex">
+                <motion.div
+                  className="w-full h-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <div className="relative overflow-hidden rounded-lg shadow-lg h-full">
+                    <img
+                      src="/team/team.webp"
+                      alt="L'équipe du Nomad Festival"
+                      className="w-full h-full object-cover rounded-lg transform transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-lg" />
+                  </div>
+                </motion.div>
+              </div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold text-festival-primary mb-4">
-                Le Festival
-              </h2>
-              <p className="text-xl">
-                Déjà devenu pour certain.es le rendez-vous estival dédié à la
-                musique. Le Nomad c'est 48h de concerts, d'exposition, de jeux
-                et d'animations. Mais aussi un camping sur le site, des repas et
-                un bar pour se restaurer.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-festival-primary mb-4">
-                Membres du Bureau
-              </h2>
-              <ul className="list-disc pl-6 space-y-2 text-xl">
-                <li>Lisa Fericelli – Présidente – Pôle communication</li>
-                <li>
-                  Simon Griffault – Vice-président – Pôle artiste et animation
-                </li>
-                <li>Juliette Nossit – Secrétaire – Pôle logistique</li>
-                <li>Yanis Dali-Yahia – Trésorier – Pôle artiste et F&B</li>
-                <li>Théo Laffenêtre – Direction artistique</li>
-              </ul>
-            </div>
-
-            <div>
+            <div className="py-8">
               <h2 className="text-center heading-2 text-2xl font-bold text-festival-primary mb-4">
                 Soutiens l'aventure !
               </h2>
