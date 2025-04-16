@@ -1,5 +1,6 @@
 import { useForm } from "@formspree/react";
 import { motion } from "framer-motion";
+import { Button } from "../components/Button";
 
 export default function About() {
   const [,] = useForm("xyyqzzzz");
@@ -12,7 +13,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl font-bold text-festival-primary mb-8 text-center">
+          <h1 className="text-4xl font-bold text-festival-primary mb-8 text-center py-4">
             À propos du Nomad Festival
           </h1>
 
@@ -52,7 +53,8 @@ export default function About() {
               </h2>
               <ul className="list-disc pl-6 space-y-2 text-xl">
                 <li>
-                  Un festival privé non ouvert au public au cours de l'été.
+                  Un festival de musique une fois par an qui réunit de nombreux
+                  artistes.
                 </li>
                 <li>Des concerts ouverts au public au cours de l'année.</li>
               </ul>
@@ -68,6 +70,45 @@ export default function About() {
                 et d'animations. Mais aussi un camping sur le site, des repas et
                 un bar pour se restaurer.
               </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-festival-primary mb-4">
+                Membres du Bureau
+              </h2>
+              <ul className="list-disc pl-6 space-y-2 text-xl">
+                <li>Lisa Fericelli – Présidente – Pôle communication</li>
+                <li>
+                  Simon Griffault – Vice-président – Pôle artiste et animation
+                </li>
+                <li>Juliette Nossit – Secrétaire – Pôle logistique</li>
+                <li>Yanis Dali-Yahia – Trésorier – Pôle artiste et F&B</li>
+                <li>Théo Laffenêtre – Direction artistique</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-center heading-2 text-2xl font-bold text-festival-primary mb-4">
+                Soutiens l'aventure !
+              </h2>
+              <p className="text-xl mb-6">
+                Envie de nous donner un coup de pouce ? Deviens membre de
+                l'association Nomad Festival ! En adhérant, tu soutiens notre
+                projet et participes activement à son développement. Ton soutien
+                nous permet de continuer à organiser des événements de qualité
+                et de promouvoir les artistes émergents.
+              </p>
+              <div className="flex justify-center">
+                <a
+                  href="https://www.helloasso.com/associations/nomad-festival/adhesions/adhesion-association-nomad-festival"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="primary" size="lg">
+                    Je veux soutenir l'association
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>

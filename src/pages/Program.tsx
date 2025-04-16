@@ -174,11 +174,11 @@ export default function Program() {
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.9, opacity: 0 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="relative w-full h-[90vh] lg:h-auto lg:max-h-[90vh] lg:max-w-4xl mx-4 rounded-lg overflow-hidden artist-dialog bg-opacity-95"
+                  className="relative w-full h-[90vh] lg:h-auto lg:max-h-[90vh] lg:max-w-6xl mx-4 rounded-lg overflow-hidden artist-dialog bg-opacity-95"
                   style={{ backgroundColor: "var(--color-background)" }}
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
-                    <div className="lg:col-span-5 h-[35vh] lg:h-full relative">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
+                    <div className="h-[35vh] lg:h-full relative">
                       <img
                         src={selectedArtist.image}
                         alt={selectedArtist.name}
@@ -186,7 +186,7 @@ export default function Program() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-[var(--color-background)] opacity-20" />
                     </div>
-                    <div className="lg:col-span-7 flex flex-col overflow-hidden">
+                    <div className="lg:col-span-1 flex flex-col overflow-hidden">
                       <div className="p-6 lg:p-10 lg:pl-12 flex-1 overflow-y-auto custom-scrollbar">
                         <h2
                           className="heading-1 mb-3"

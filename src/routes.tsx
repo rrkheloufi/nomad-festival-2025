@@ -1,21 +1,21 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Shop from './pages/Shop';
-import Program from './pages/Program';
-import Tickets from './pages/Tickets';
-import FAQ from './pages/FAQ';
-import Contact from './pages/Contact';
-import Edition2023 from './pages/editions/Edition2023';
-import Edition2024 from './pages/editions/Edition2024';
-import ButtonPage from './pages/ButtonPage';
+import { Route, Routes } from "react-router-dom";
+import About from "./pages/About";
+import ButtonPage from "./pages/ButtonPage";
+import Contact from "./pages/Contact";
+import Edition2023 from "./pages/editions/Edition2023";
+import Edition2024 from "./pages/editions/Edition2024";
+import FAQ from "./pages/FAQ";
+import Home from "./pages/Home";
+import Program from "./pages/Program";
+import ShopNotAvailable from "./pages/ShopNotAvailable";
+import Tickets from "./pages/Tickets";
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/shop" element={<Shop />} />
+      <Route path="/shop" element={<ShopNotAvailable />} />
       <Route path="/program" element={<Program />} />
       <Route path="/tickets" element={<Tickets />} />
       <Route path="/faq" element={<FAQ />} />

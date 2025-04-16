@@ -18,7 +18,7 @@ export function Footer() {
           <div>
             <h3 className="heading-3 mb-4">Nomad Festival</h3>
             <p className="paragraph">
-              Un festival unique qui célèbre la musique et la culture nomade.
+              Un festival unique qui célèbre la musique de tous les styles.
             </p>
           </div>
           <div>

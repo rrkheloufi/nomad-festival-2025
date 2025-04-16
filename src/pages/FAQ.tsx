@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     question: "Est-ce qu'il y aura des toilettes ?",
-    answer: "Oui, nos belles toilettes sèches t'accueilleront.",
+    answer: "Oui, nos belles toilettes t'accueilleront.",
   },
   {
     question: "Qu'est-ce que je dois apporter ?",
@@ -108,14 +108,15 @@ export default function FAQ() {
                         backgroundColor: "var(--color-background)",
                       }}
                     >
-                      <strong
-                        className="prose prose-xl prose-invert max-w-none leading-relaxed"
-                        style={{
-                          color: "var(--color-text)",
-                        }}
-                      >
-                        {faq.answer}
-                      </strong>
+                      <p>
+                        <strong
+                          style={{
+                            color: "var(--color-text)",
+                          }}
+                        >
+                          {faq.answer}
+                        </strong>
+                      </p>
                     </Disclosure.Panel>
                   </motion.div>
                 )}

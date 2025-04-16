@@ -150,7 +150,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ delay: 3.5 }}
           >
-            Venez passer le meilleur week-end de l'été !
+            Viens passer le meilleur week-end de l'été !
           </motion.h2>
 
           <motion.div
@@ -160,12 +160,12 @@ export default function Home() {
             transition={{ delay: 3.5 }}
           >
             <a
-              href="https://www.google.fr"
+              href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2025?_gl=1%2aclwyfd%2a_gcl_au%2aMTUxMjkzNDAzNi4xNzQyNTUxNjcy"
               target="_blank"
               rel="noopener noreferrer"
             >
               <Button variant="primary" size="lg">
-                Réserver vos billets
+                Réserve ton billet
               </Button>
             </a>
           </motion.div>
