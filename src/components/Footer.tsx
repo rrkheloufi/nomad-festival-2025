@@ -25,7 +25,6 @@ export function Footer() {
             <h3 className="heading-3 mb-4">Contact</h3>
             <p>
               Email: nomad.festivalfr@gmail.com <br />
-              Tel: +33 (0)1 23 45 67 89
             </p>
           </div>
           <div>

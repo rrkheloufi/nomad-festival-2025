@@ -18,12 +18,11 @@ export default function Contact() {
           </h1>
 
           <div className="w-full">
-            {/* Informations de contact */}
             <div className="bg-festival-dark/50 rounded-lg p-8 text-center">
-              <h2 className="text-2xl font-bold text-festival-primary mb-8">
+              <h2 className="heading-2 font-bold text-festival-primary mb-8 py-4">
                 Nos coordonnées
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-semibold text-festival-light mb-2">
                     Email
@@ -33,17 +32,6 @@ export default function Contact() {
                     className="text-festival-primary hover:text-festival-primary/80 transition-colors text-lg"
                   >
                     nomad.festivalfr@gmail.com
-                  </a>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-festival-light mb-2">
-                    Téléphone
-                  </h3>
-                  <a
-                    href="tel:+33123456789"
-                    className="text-festival-primary hover:text-festival-primary/80 transition-colors text-lg"
-                  >
-                    +33 (0)1 23 45 67 89
                   </a>
                 </div>
                 <div>
