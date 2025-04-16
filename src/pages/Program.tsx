@@ -15,7 +15,7 @@ interface Artist {
   description: string;
 }
 
-const artists: Artist[] = [
+export const artists: Artist[] = [
   {
     name: "Fabrice et Bouée 2 Sauvetaj",
     style: "Rap rigolo",

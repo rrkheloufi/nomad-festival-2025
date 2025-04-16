@@ -3,19 +3,7 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Button } from "../components/Button";
 import "../styles/Home.css";
-
-const initialArtists = [
-  "M41H14",
-  "Glenn B",
-  "Limace",
-  "SansChaise VS Arthychoc",
-  "Harry & Emma",
-  "Clément Serra",
-  "Morfalous",
-  "The Couch Sleepers",
-  "Marc Hazan",
-  "Pierre Albarn",
-];
+import { artists } from "./Program";
 
 export default function Home() {
   const [ref, inView] = useInView({
@@ -26,12 +14,14 @@ export default function Home() {
   const [videoError, setVideoError] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showLogo, setShowLogo] = useState(false);
-  const [artists, setArtists] = useState<string[]>([]);
+  const [displayedArtists, setDisplayedArtists] = useState<string[]>([]);
 
   useEffect(() => {
     // Shuffle artists array
-    const shuffledArtists = [...initialArtists].sort(() => Math.random() - 0.5);
-    setArtists(shuffledArtists);
+    const shuffledArtists = [...artists]
+      .sort(() => Math.random() - 0.5)
+      .map((artist) => artist.name);
+    setDisplayedArtists(shuffledArtists);
 
     // Show logo after 1.5 seconds
     const logoTimer = setTimeout(() => {
@@ -59,7 +49,9 @@ export default function Home() {
   }, []);
 
   // Calculate the width of the artist banner
-  const artistsString = [...artists, ...artists].join("     •     ");
+  const artistsString = [...displayedArtists, ...displayedArtists].join(
+    "     •     "
+  );
 
   return (
     <div className="relative min-h-screen">
