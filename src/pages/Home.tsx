@@ -157,7 +157,7 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               <Button variant="primary" size="lg">
-                Réserve ton billet
+                Je réserve mon billet
               </Button>
             </a>
           </motion.div>
