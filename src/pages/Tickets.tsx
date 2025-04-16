@@ -3,11 +3,6 @@ import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { Button } from "../components/Button";
 
-interface PassInfo {
-  price: number;
-  description: string;
-}
-
 export default function Tickets() {
   const [sliderValue, setSliderValue] = useState(50); // Prix par défaut
 
