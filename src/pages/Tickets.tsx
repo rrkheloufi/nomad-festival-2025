@@ -88,7 +88,6 @@ export default function Tickets() {
               <li>• Les billets sont nominatifs et non remboursables</li>
               <li>• Un justificatif d'identité sera demandé à l'entrée</li>
               <li>• Les mineurs doivent être accompagnés d'un adulte</li>
-              <li>• Le camping est inclus uniquement dans le pass 3 jours</li>
             </ul>
           </div>
         </motion.div>

@@ -6,7 +6,7 @@ const faqs = [
   {
     question: "C'est quand le festoche ?",
     answer:
-      "Le festival ouvrira ses portes le vendredi 22 août à 14h et les fermera le dimanche 24 août à 14h. Les concerts débuteront à partir de 16h30 donc pense à réserver ton aprèm pour avoir le temps d'arriver et d'installer ta tente avant le début des festivités !",
+      "Le festival ouvrira ses portes le vendredi 22 août à 14h et les fermera le dimanche 24 août à 14h. Les concerts débuteront à partir de 16h donc pense à réserver ton aprèm pour avoir le temps d'arriver et d'installer ta tente avant le début des festivités !",
   },
   {
     question: "Comment vient-on au Nomad Festival ?",
@@ -16,12 +16,12 @@ const faqs = [
   {
     question: "Dois-je amener à manger ?",
     answer:
-      "Les repas (midi et soir) sont compris dans le billet. Ils seront principalement végétaliens pour correspondre à un maximum de régimes alimentaires. Les menus seront publiés en amont du festival. Pas de petit-déjeuner cette année, Il y a eu trop de gaspillages alimentaires les années précédentes. Tu es libre d'amener la nourriture de ton choix si tu le souhaites.",
+      "Les repas (midi et soir) sont compris dans le billet (sauf Pass Local). Ils seront principalement végétaliens pour correspondre à un maximum de régimes alimentaires. Les menus seront publiés en amont du festival. Pas de petit-déjeuner cette année, Il y a eu trop de gaspillages alimentaires les années précédentes. Tu es libre d'amener la nourriture de ton choix si tu le souhaites.",
   },
   {
     question: "Dois-je amener à boire ?",
     answer:
-      "Il y aura une buvette sur place à petits prix avec des boissons non alcoolisées, bières et vins.",
+      "Il y aura une buvette sur place à petits prix avec des boissons non alcoolisées, bières, vins et sangria",
   },
   {
     question: "Où dort-on ? Dois-je amener de quoi dormir ?",
