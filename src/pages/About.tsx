@@ -29,10 +29,10 @@ export default function About() {
               </p>
               <p className="text-xl">
                 Association régie par la loi du 1er juillet 1901 et le décret du
-                16 août 1901, Notre association a pour objectif la promotion de
+                16 août 1901. Notre association a pour objectif la promotion de
                 jeunes artistes, de créer des rencontres et des passerelles
-                entre créateur.ices par l'organisation d'évènements culturels,
-                en particulier dans le domaine de la musique.
+                entre créateurs/créatrices par l'organisation d'évènements
+                culturels, en particulier dans le domaine de la musique.
               </p>
             </div>
 
@@ -118,7 +118,7 @@ export default function About() {
                 l'association Nomad Festival ! En adhérant, tu soutiens notre
                 projet et participes activement à son développement. Ton soutien
                 nous permet de continuer à organiser des événements de qualité
-                et de promouvoir les artistes émergents.
+                et de promouvoir les artistes émergent.es.
               </p>
               <div className="flex justify-center">
                 <a

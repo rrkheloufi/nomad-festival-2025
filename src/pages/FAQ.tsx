@@ -6,12 +6,12 @@ const faqs = [
   {
     question: "C'est quand le festoche ?",
     answer:
-      "Le festival ouvrira ses portes le vendredi 22 août à 14h et les fermera le dimanche 24 août à 14h. Les concerts débuteront à partir de 16h donc pense à réserver ton aprèm pour avoir le temps d'arriver et d'installer ta tente avant le début des festivités !",
+      "Le festival ouvrira ses portes le vendredi 22 août à 14h et les fermera le dimanche 24 août à 14h. Les concerts débuteront à  le vendredi donc pense à réserver ton aprèm pour avoir le temps d'arriver et d'installer ta tente avant le début des festivités !",
   },
   {
     question: "Comment vient-on au Nomad Festival ?",
     answer:
-      "Le Nomad Festival se déroule cette année à Larbey dans les Landes. Venir en voiture reste l'option la plus simple et la seule qui permet l'accès direct au festival. Nous ferons des posts sur nos différents réseaux pour organiser des covoiturages entre les festivaliers depuis diverses villes (Paris, Bordeaux, Toulouse, …).",
+      "Le Nomad Festival se déroule cette année à Larbey dans les Landes. Venir en voiture reste l'option la plus simple et la seule qui permet l'accès direct au festival. Nous ferons des posts sur nos différents réseaux pour organiser des covoiturages entre les festivalier.es depuis diverses villes (Paris, Bordeaux, Toulouse, …).",
   },
   {
     question: "Dois-je amener à manger ?",
@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "Dois-je amener à boire ?",
     answer:
-      "Il y aura une buvette sur place à petits prix avec des boissons non alcoolisées, bières, vins et sangria",
+      "Il y aura une buvette sur place à petits prix avec des boissons non alcoolisées, bières, vins et sangria.",
   },
   {
     question: "Où dort-on ? Dois-je amener de quoi dormir ?",
@@ -60,7 +60,7 @@ const faqs = [
   {
     question: "J'ai envie de me produire au Nomad comment faire ?",
     answer:
-      "La programmation musicale est complète pour cette année mais n'hésite pas à nous contacter sur instagram ou sur notre adresse mail (nomad.festivalfr@gmail.com) pour la prochaine édition. Nous sommes toujours à la recherche de nouveaux.elles artistes motivé.es pour participer au projet !",
+      "La programmation musicale est complète pour cette année mais n'hésite pas à nous contacter sur instagram ou sur notre adresse mail (nomad.festivalfr@gmail.com) pour la prochaine édition. Nous sommes toujours à la recherche de nouveaux/nouvelles artistes motivé.es pour participer au projet !",
   },
   {
     question:

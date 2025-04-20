@@ -13,6 +13,7 @@ interface Artist {
   soundcloud?: string;
   deezer?: string;
   description: string;
+  linktree?: string;
 }
 
 export const artists: Artist[] = [
@@ -59,7 +60,7 @@ export const artists: Artist[] = [
       "Zita Nova, artiste éclectique aux nombreuses casquettes, est tombée amoureuse de la drum and bass et n'a eu d'autre choix que de se lancer dans le mix afin de faire découvrir ses selecta tantôt girly, tantôt tranchantes.\n\nLa découpeuse de remixes jump up des années 2000 vous montrera la bass sous un jour joyeux et entrainant grâce à ses sets millimétrés et ses accords majeurs à foison.",
   },
   {
-    name: "UNBREAKHER",
+    name: "Unbreakher",
     style: "Reprises Rock/Hard Rock",
     image: "/artists/unbreakher.jpg",
     instagram: "https://www.instagram.com/unbreakher/",
@@ -102,6 +103,25 @@ export const artists: Artist[] = [
     description:
       "Du rap tropical déjanté en provenance d'Allemagne.\nSecouez vos tongs. Vous ne pouvez pas faire autrement, car vous n'êtes pas préparés à cela.\n\nSuperinventur mélange le rap avec le cachegue et le funk carioca.\nDes textes trop compliqués pour les professeurs de philosophie sur des rythmes qui font bouger les fesses de tout le monde.",
   },
+  {
+    name: "Ginger 808",
+    style: "DJ set - Dum'n'bass roller, UK, neuro",
+    image: "/artists/ginger-808.jpg",
+    soundcloud: "https://on.soundcloud.com/neQrBWj2gVsRAj4H6",
+    instagram: "https://www.instagram.com/ginger.808",
+    linktree: "https://linktr.ee/ginger808",
+    description:
+      "Ginger 808 est une artiste du Sud-Ouest qui incarne sa vision de la bass music à la sauce UK.\n\nPassionnée par la scène britannique, elle s'inspire d'artistes comme Gray, Deekline et Bullet Tooth pour créer une expérience musicale qui navigue entre UK Garage et drum and bass avec une énergie contagieuse.\n\nL'évolution récente de son parcours musical marque un tournant intéressant : l'intégration de sa voix dans des moments clés de ses sets, qui créé un contraste saisissant entre puissance des beats et sensibilité vocale.",
+  },
+  {
+    name: "Lulz",
+    style: "Dj set - trance/techno",
+    image: "/artists/lulz.jpg",
+    soundcloud: "https://soundcloud.com/lulz909",
+    instagram: "https://www.instagram.com/lulz_909/",
+    description:
+      "Lulz est un jeune DJ parisien, résident et fondateur du collectif Nectar, avec lequel il anime régulièrement les nuits de divers clubs de la capitale.\n\nPuisant ses inspirations dans un vaste registre, allant de rythmiques trance en tout genre à une techno vive et implacable, en passant par des notes mentales ou des synthés aux sonorités rave, Lulz tisse un univers complexe, résolument destiné aux dancefloors.\n\nHabitué des scènes parisiennes, il a notamment joué au Mazette, à la Marbrerie, au Nouveau Casino, ou encore au Ferrailleur (Nantes).",
+  },
 ];
 
 export default function Program() {
@@ -129,7 +149,9 @@ export default function Program() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="heading-1 text-center mb-12">Programmation 2025</h1>
+          <h1 className="heading-1 text-center mb-12 py-8">
+            Programmation 2025
+          </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {artists.map((artist, index) => (
@@ -200,12 +222,9 @@ export default function Program() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-[var(--color-background)] opacity-20" />
                     </div>
-                    <div className="lg:col-span-1 flex flex-col overflow-hidden">
+                    <div className="lg:col-span-1 flex flex-col overflow-hidden max-h-[60vh] lg:max-h-[80vh]">
                       <div className="p-6 lg:p-10 lg:pl-12 flex-1 overflow-y-auto custom-scrollbar">
-                        <h2
-                          className="heading-1 mb-3"
-                          style={{ color: "var(--color-primary)" }}
-                        >
+                        <h2 className="heading-1 mb-3 text-white mb-2 drop-shadow-glow">
                           {selectedArtist.name}
                         </h2>
                         <p

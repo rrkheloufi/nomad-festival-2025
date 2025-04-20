@@ -1,4 +1,4 @@
-import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 
@@ -30,16 +30,6 @@ export function Footer() {
           <div>
             <h3 className="heading-3 mb-4">Suivez-nous</h3>
             <div className="flex space-x-6">
-              <motion.a
-                href="https://www.facebook.com/groups/268163618833736"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                className="text-2xl transition-colors"
-                style={{ color: "var(--color-text)" }}
-              >
-                <FontAwesomeIcon icon={faFacebook} />
-              </motion.a>
               <motion.a
                 href="https://www.instagram.com/nomadfestoff/"
                 target="_blank"

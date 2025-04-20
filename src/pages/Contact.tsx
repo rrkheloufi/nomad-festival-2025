@@ -1,4 +1,4 @@
-import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import { Button } from "../components/Button";
@@ -39,15 +39,6 @@ export default function Contact() {
                     Réseaux sociaux
                   </h3>
                   <div className="flex justify-center space-x-6">
-                    <motion.a
-                      href="https://www.facebook.com/groups/268163618833736"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      className="text-festival-light hover:text-festival-primary transition-colors text-2xl"
-                    >
-                      <FontAwesomeIcon icon={faFacebook} />
-                    </motion.a>
                     <motion.a
                       href="https://www.instagram.com/nomadfestoff/"
                       target="_blank"

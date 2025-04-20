@@ -48,17 +48,16 @@ export default function Tickets() {
               </h2>
 
               <div className="mb-8">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-                  <p className="text-festival-light text-base max-w-xl">
-                    Notre billetterie est solidaire : choisis le tarif qui
-                    correspond à tes moyens. Les tarifs plus élevés permettent
-                    de compenser les tarifs réduits, pour que le festival soit
-                    accessible à tous !
-                  </p>
-                  <span className="text-3xl font-bold text-festival-accent md:ml-4 md:whitespace-nowrap">
-                    {getDisplayPrice(sliderValue)}€
-                  </span>
-                </div>
+                <p className="text-festival-light text-base mb-6">
+                  Notre billetterie est solidaire : choisis le tarif qui
+                  correspond à tes moyens. Les tarifs plus élevés permettent de
+                  compenser les tarifs réduits, pour que le festival soit
+                  accessible à toutes et tous !
+                </p>
+
+                <span className="text-3xl font-bold text-festival-accent mb-6 block">
+                  {getDisplayPrice(sliderValue)}€
+                </span>
 
                 <div className="px-2 md:px-4 py-4 md:py-8">
                   <Slider
@@ -231,7 +230,7 @@ export default function Tickets() {
                     </li>
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✕</span>
-                      Repas et camping inclus
+                      Repas et camping NON inclus
                     </li>
                   </ul>
                 </div>
@@ -275,7 +274,7 @@ export default function Tickets() {
                     </li>
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✕</span>
-                      Repas et camping inclus
+                      Repas et camping NON inclus
                     </li>
                   </ul>
                 </div>

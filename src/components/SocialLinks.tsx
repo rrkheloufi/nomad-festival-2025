@@ -1,4 +1,5 @@
 import {
+  faChrome,
   faDeezer,
   faFacebook,
   faInstagram,
@@ -15,6 +16,7 @@ interface SocialLinksProps {
   facebook?: string;
   soundcloud?: string;
   deezer?: string;
+  linktree?: string;
   size?: "sm" | "lg";
   className?: string;
   onClickCapture?: (e: React.MouseEvent) => void;
@@ -34,6 +36,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
   facebook,
   soundcloud,
   deezer,
+  linktree,
   size = "lg",
   className = "",
   onClickCapture,
@@ -74,6 +77,12 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
       url: deezer,
       icon: faDeezer,
       hoverColor: "#FF0000",
+    },
+    {
+      type: "linktree",
+      url: linktree,
+      icon: faChrome,
+      hoverColor: "#43E97B",
     },
   ];
 
