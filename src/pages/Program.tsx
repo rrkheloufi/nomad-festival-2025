@@ -34,14 +34,14 @@ export const artists: Artist[] = [
   },
   {
     name: "Jaja",
-    style: "DJ",
+    style: "DJ set - Shatta & Baile Funk",
     image: "/artists/jaja.jpg",
     description:
       "Jaja est une \"BabyDj\" qui aime danser et chanter sur des rythmes Shatta et Baile Funk !\n\nEn tant que passionnée de ces genres musicaux, elle tient à souligner l'importance de reconnaître leurs origines et leur contexte socio-politique. Ces styles sont nés dans des communautés marginalisées et portent en eux des messages de résistance et d'affirmation culturelle.\n\nElle souhaite partager cette musique avec respect et conscience, en célébrant sa richesse et sa diversité pour que la musique nous unisse et nous fasse vibrer !",
   },
   {
     name: "Solaal",
-    style: "Rap avec des influences musique électronique et rock",
+    style: "Rap - influences électroniques et rock",
     image: "/artists/solaal.jpg",
     spotify:
       "https://open.spotify.com/intl-fr/artist/2We5DMXAZYMivza4uzZNvJ?si=7J6HjkwGTN6lRHpIUEuLGQ",
@@ -52,7 +52,7 @@ export const artists: Artist[] = [
   },
   {
     name: "Zita Nova",
-    style: "Set de drum'n'bass (dancefloor, jump up à priori)",
+    style: "DJ set - Drum’n’bass",
     image: "/artists/zita-nova.jpg",
     soundcloud: "https://soundcloud.com/laurinef-1",
     instagram: "https://www.instagram.com/zita.nova/",
@@ -70,7 +70,7 @@ export const artists: Artist[] = [
   },
   {
     name: "2concevable",
-    style: "Reprise musique en duo",
+    style: "Reprises musicales en duo",
     image: "/artists/2concevable.jpg",
     youtube: "https://youtu.be/3seMwPC87eA?si=OlII-w1Bo-KRRLc2",
     description:
@@ -121,6 +121,15 @@ export const artists: Artist[] = [
     instagram: "https://www.instagram.com/lulz_909/",
     description:
       "Lulz est un jeune DJ parisien, résident et fondateur du collectif Nectar, avec lequel il anime régulièrement les nuits de divers clubs de la capitale.\n\nPuisant ses inspirations dans un vaste registre, allant de rythmiques trance en tout genre à une techno vive et implacable, en passant par des notes mentales ou des synthés aux sonorités rave, Lulz tisse un univers complexe, résolument destiné aux dancefloors.\n\nHabitué des scènes parisiennes, il a notamment joué au Mazette, à la Marbrerie, au Nouveau Casino, ou encore au Ferrailleur (Nantes).",
+  },
+  {
+    name: "Riva Leon",
+    style: "Indie - Pop",
+    image: "/artists/riva-leon.jpg",
+    description:
+      "Chanteuse et compositrice, Riva Leon sort ses propres chansons depuis 2020. L'intimité palpable de sa musique n'a rien d'un hasard : ses morceaux naissent d'abord seule dans sa chambre, à la guitare ou au piano.\n\nLa production douce, parfois entraînante, de ses titres indie pop évoque des artistes comme Lizzy McAlpine, JP Saxe ou Taylor Swift — qui figurent d'ailleurs parmi ses inspirations.\n\nLa mélancolie et l'espoir sont des thèmes récurrents dans son univers musical, portés par sa voix douce et apaisante. À chaque projet, Riva Leon dévoile une nouvelle facette de sa créativité. En ce moment, elle écrit de nombreuses nouvelles chansons et explore également d'autres genres musicaux.",
+    spotify:
+      "https://open.spotify.com/intl-de/artist/6on9aFPA41KLlYSKTEVyL4?si=-lDqjwZPQfK0pW75koIKhQ",
   },
 ];
 
