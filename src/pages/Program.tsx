@@ -105,7 +105,7 @@ export const artists: Artist[] = [
   },
   {
     name: "Ginger 808",
-    style: "DJ set - Dum'n'bass roller, UK, neuro",
+    style: "DJ set - Drum'n'bass roller, UK, neuro",
     image: "/artists/ginger-808.jpg",
     soundcloud: "https://on.soundcloud.com/neQrBWj2gVsRAj4H6",
     instagram: "https://www.instagram.com/ginger.808",
