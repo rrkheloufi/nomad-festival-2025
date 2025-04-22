@@ -19,7 +19,7 @@ interface Artist {
 export const artists: Artist[] = [
   {
     name: "Fabrice et Bouée 2 Sauvetaj",
-    style: "Rap rigolo",
+    style: "Rap Rigolo",
     image: "/artists/fabrice-et-bouee-2-sauvetaj.png",
     spotify: "https://open.spotify.com/intl-fr/artist/6LcvylIR9VFoZ01266BAno",
     description:
@@ -41,7 +41,7 @@ export const artists: Artist[] = [
   },
   {
     name: "Solaal",
-    style: "Rap - influences électroniques et rock",
+    style: "Rap - Influences électroniques et rock",
     image: "/artists/solaal.jpg",
     spotify:
       "https://open.spotify.com/intl-fr/artist/2We5DMXAZYMivza4uzZNvJ?si=7J6HjkwGTN6lRHpIUEuLGQ",
@@ -52,7 +52,7 @@ export const artists: Artist[] = [
   },
   {
     name: "Zita Nova",
-    style: "DJ set - Drum’n’bass",
+    style: "DJ set - Drum'n'bass",
     image: "/artists/zita-nova.jpg",
     soundcloud: "https://soundcloud.com/laurinef-1",
     instagram: "https://www.instagram.com/zita.nova/",
@@ -115,7 +115,7 @@ export const artists: Artist[] = [
   },
   {
     name: "Lulz",
-    style: "Dj set - trance/techno",
+    style: "Dj set - Trance/Techno",
     image: "/artists/lulz.jpg",
     soundcloud: "https://soundcloud.com/lulz909",
     instagram: "https://www.instagram.com/lulz_909/",
@@ -219,20 +219,20 @@ export default function Program() {
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.9, opacity: 0 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="relative w-full h-[90vh] lg:h-auto lg:max-h-[90vh] lg:max-w-6xl mx-4 rounded-lg overflow-hidden artist-dialog bg-opacity-95"
+                  className="relative w-full h-[80vh] lg:h-auto lg:max-h-[90vh] lg:max-w-6xl mx-4 rounded-lg overflow-hidden artist-dialog bg-opacity-95"
                   style={{ backgroundColor: "var(--color-background)" }}
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-                    <div className="h-[35vh] lg:h-full relative">
+                  <div className="flex flex-col lg:grid lg:grid-cols-2 h-full overflow-y-auto custom-scrollbar">
+                    <div className="lg:h-full relative">
                       <img
                         src={selectedArtist.image}
                         alt={selectedArtist.name}
-                        className="w-full h-full object-cover"
+                        className="w-full lg:h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-[var(--color-background)] opacity-20" />
                     </div>
-                    <div className="lg:col-span-1 flex flex-col overflow-hidden max-h-[60vh] lg:max-h-[80vh]">
-                      <div className="p-6 lg:p-10 lg:pl-12 flex-1 overflow-y-auto custom-scrollbar">
+                    <div className="lg:col-span-1 flex flex-col lg:overflow-y-auto lg:max-h-[80vh]">
+                      <div className="p-6 lg:p-10 lg:pl-12 flex-1">
                         <h2 className="heading-1 mb-3 text-white mb-2 drop-shadow-glow">
                           {selectedArtist.name}
                         </h2>
