@@ -8,6 +8,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 
 interface SocialLinksProps {
   spotify?: string;
@@ -41,55 +42,77 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
   className = "",
   onClickCapture,
 }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Précharger les icônes
+    const preloadIcons = async () => {
+      try {
+        // Attendre un court délai pour s'assurer que les icônes sont chargées
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        setIsLoaded(true);
+      } catch (error) {
+        console.error("Erreur lors du chargement des icônes:", error);
+        setIsLoaded(true); // On continue quand même si ça échoue
+      }
+    };
+
+    preloadIcons();
+  }, []);
+
   const socialLinks: SocialLink[] = [
     {
       type: "spotify",
       url: spotify,
       icon: faSpotify,
-      hoverColor: "#1DB954",
+      hoverColor: "hover:text-[#1DB954]",
     },
     {
       type: "youtube",
       url: youtube,
       icon: faYoutube,
-      hoverColor: "#FF0000",
+      hoverColor: "hover:text-[#FF0000]",
     },
     {
       type: "instagram",
       url: instagram,
       icon: faInstagram,
-      hoverColor: "#E1306C",
+      hoverColor: "hover:text-[#E1306C]",
     },
     {
       type: "facebook",
       url: facebook,
       icon: faFacebook,
-      hoverColor: "#4267B2",
+      hoverColor: "hover:text-[#4267B2]",
     },
     {
       type: "soundcloud",
       url: soundcloud,
       icon: faSoundcloud,
-      hoverColor: "#FF7700",
+      hoverColor: "hover:text-[#FF7700]",
     },
     {
       type: "deezer",
       url: deezer,
       icon: faDeezer,
-      hoverColor: "#FF0000",
+      hoverColor: "hover:text-[#FF0000]",
     },
     {
       type: "linktree",
       url: linktree,
       icon: faChrome,
-      hoverColor: "#43E97B",
+      hoverColor: "hover:text-[#43E97B]",
     },
   ];
 
   const textSize = size === "sm" ? "text-lg" : "text-2xl lg:text-3xl";
 
   return (
-    <div className={`flex space-x-4 ${className}`}>
+    <div
+      className={`flex space-x-4 ${className} ${
+        !isLoaded ? "opacity-0" : "opacity-100 transition-opacity duration-300"
+      }`}
+    >
       {socialLinks.map(
         (social) =>
           social.url && (
@@ -98,14 +121,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${textSize} transition-colors duration-300`}
-              style={{ color: "var(--color-text)" }}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = social.hoverColor)
-              }
-              onMouseOut={(e) =>
-                (e.currentTarget.style.color = "var(--color-text)")
-              }
+              className={`${textSize} transition-colors duration-300 ${social.hoverColor} text-white`}
               onClick={onClickCapture}
             >
               <FontAwesomeIcon icon={social.icon} />

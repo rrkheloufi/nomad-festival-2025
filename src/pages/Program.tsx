@@ -182,23 +182,26 @@ export default function Program() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                   </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-glow">
-                      {artist.name}
-                    </h2>
-                    <p
-                      className="text-lg mb-4"
-                      style={{ color: "var(--color-light)" }}
-                    >
-                      {artist.style}
-                    </p>
-
-                    <SocialLinks
-                      {...artist}
-                      size="sm"
-                      onClickCapture={(e) => e.stopPropagation()}
-                      className="text-white"
-                    />
+                  <div className="absolute inset-0">
+                    <div className="absolute top-0 left-0 p-6">
+                      <SocialLinks
+                        {...artist}
+                        size="sm"
+                        onClickCapture={(e) => e.stopPropagation()}
+                        className="text-white"
+                      />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-glow">
+                        {artist.name}
+                      </h2>
+                      <p
+                        className="text-lg"
+                        style={{ color: "var(--color-light)" }}
+                      >
+                        {artist.style}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
