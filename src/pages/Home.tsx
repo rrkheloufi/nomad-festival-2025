@@ -68,6 +68,9 @@ export default function Home() {
               title="Festival Background Video"
               className="youtube-iframe"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              data-playsinline="true"
+              data-webkit-playsinline="true"
+              allowFullScreen
             />
           </div>
         ) : (

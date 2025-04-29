@@ -1,7 +1,7 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { AppRoutes } from './routes';
-import { ThemeProvider } from './context/ThemeContext';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Layout } from "./components/Layout";
+import { ThemeProvider } from "./context/ThemeContext";
+import { AppRoutes } from "./routes";
 
 function App() {
   return (

@@ -1,30 +1,14 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import "../styles/Home.css";
 
-export default function Edition2024() {
+export default function Edition2022() {
   const [images, setImages] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   useEffect(() => {
-    const imageFiles = [
-      "/editions/2024/DSC_1112.JPG",
-      "/editions/2024/DSC_1122.JPG",
-      "/editions/2024/DSC_1142.JPG",
-      "/editions/2024/DSC_1146.JPG",
-      "/editions/2024/DSC_1165.JPG",
-      "/editions/2024/DSC_1199.JPG",
-      "/editions/2024/DSC_1200.JPG",
-      "/editions/2024/DSC_1233.JPG",
-      "/editions/2024/DSC_1235.JPG",
-      "/editions/2024/DSC_1241.JPG",
-      "/editions/2024/DSC_1335.JPG",
-      "/editions/2024/DSC_1356.JPG",
-      "/editions/2024/DSC_1395-EDIT.jpg",
-      "/editions/2024/DSC_1417.JPG",
-      "/editions/2024/DSC_1437.JPG",
-      "/editions/2024/DSC_1457.JPG",
-    ];
+    const imageFiles = ["/editions/2024/DSC_1112.JPG"];
     setImages(imageFiles);
   }, []);
 
@@ -93,7 +77,7 @@ export default function Edition2024() {
 
             <div className="w-full h-[600px] mb-12">
               <iframe
-                src="https://www.youtube.com/embed/vMHOzQ0sogc?controls=1&rel=0&showinfo=0&modestbranding=1"
+                src="https://www.youtube.com/embed/zSQSRK2-Opc?controls=1&rel=0&showinfo=0&modestbranding=1"
                 title="Aftermovie Nomad Festival 2024"
                 className="w-full h-full rounded-lg"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

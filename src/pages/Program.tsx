@@ -120,7 +120,7 @@ export const artists: Artist[] = [
     soundcloud: "https://soundcloud.com/lulz909",
     instagram: "https://www.instagram.com/lulz_909/",
     description:
-      "Lulz est un jeune DJ parisien, résident et fondateur du collectif Nectar, avec lequel il anime régulièrement les nuits de divers clubs de la capitale.\n\nPuisant ses inspirations dans un vaste registre, allant de rythmiques trance en tout genre à une techno vive et implacable, en passant par des notes mentales ou des synthés aux sonorités rave, Lulz tisse un univers complexe, résolument destiné aux dancefloors.\n\nHabitué des scènes parisiennes, il a notamment joué au Mazette, à la Marbrerie, au Nouveau Casino, ou encore au Ferrailleur (Nantes).",
+      "Lulz est un jeune DJ parisien, résident et fondateur du collectif Nectar, avec lequel il anime régulièrement les nuits de divers clubs de la capitale.\n\nPuisant ses inspirations dans un vaste registre, allant de rythmiques trance en tout genre à une techno vive et implacable, en passant par des notes mentales ou des synthés aux sonorités rave, Lulz tisse un univers complexe, résolument destiné aux dancefloors.\n\nHabitué des scènes parisiennes, il a notamment joué au Mazette, à la Marbrerie, au Nouveau Casino, ou encore au Ferrailleur (Nantes).\n\n📸 @mauditequeen",
   },
   {
     name: "Riva Leon",
