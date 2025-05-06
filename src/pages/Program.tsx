@@ -60,7 +60,7 @@ export const artists: Artist[] = [
       "Zita Nova, artiste éclectique aux nombreuses casquettes, est tombée amoureuse de la drum and bass et n'a eu d'autre choix que de se lancer dans le mix afin de faire découvrir ses selecta tantôt girly, tantôt tranchantes.\n\nLa découpeuse de remixes jump up des années 2000 vous montrera la bass sous un jour joyeux et entrainant grâce à ses sets millimétrés et ses accords majeurs à foison.",
   },
   {
-    name: "Unbreakher",
+    name: "UNBREAKHER",
     style: "Reprises Rock/Hard Rock",
     image: "/artists/unbreakher.jpg",
     instagram: "https://www.instagram.com/unbreakher/",
@@ -253,7 +253,11 @@ export default function Program() {
                         </p>
 
                         <div className="mt-auto">
-                          <SocialLinks {...selectedArtist} className="pb-4" />
+                          <SocialLinks
+                            {...selectedArtist}
+                            className="pb-4"
+                            isInModal
+                          />
                         </div>
                       </div>
                     </div>

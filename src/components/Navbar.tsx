@@ -34,6 +34,7 @@ export function Navbar() {
       submenu: [
         { name: "Nomad 2024", path: "/editions/2024" },
         { name: "Nomad 2023", path: "/editions/2023" },
+        { name: "Nomad 2022", path: "/edition-2022" },
       ],
     },
     { name: "Contact", path: "/contact" },

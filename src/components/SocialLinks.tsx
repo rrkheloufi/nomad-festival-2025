@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 interface SocialLinksProps {
   spotify?: string;
@@ -21,6 +22,7 @@ interface SocialLinksProps {
   size?: "sm" | "lg";
   className?: string;
   onClickCapture?: (e: React.MouseEvent) => void;
+  isInModal?: boolean;
 }
 
 interface SocialLink {
@@ -41,8 +43,10 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
   size = "lg",
   className = "",
   onClickCapture,
+  isInModal = false,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const { themeMode } = useTheme();
 
   useEffect(() => {
     // Précharger les icônes
@@ -106,6 +110,8 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
   ];
 
   const textSize = size === "sm" ? "text-lg" : "text-2xl lg:text-3xl";
+  const iconColor =
+    isInModal && themeMode === "light" ? "text-black" : "text-white";
 
   return (
     <div
@@ -121,7 +127,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${textSize} transition-colors duration-300 ${social.hoverColor} text-white`}
+              className={`${textSize} transition-colors duration-300 ${social.hoverColor} ${iconColor}`}
               onClick={onClickCapture}
             >
               <FontAwesomeIcon icon={social.icon} />

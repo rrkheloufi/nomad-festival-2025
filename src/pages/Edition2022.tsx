@@ -8,7 +8,16 @@ export default function Edition2022() {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   useEffect(() => {
-    const imageFiles = ["/editions/2024/DSC_1112.JPG"];
+    const imageFiles = [
+      "/editions/2022/DjPruneau4.jpg",
+      "/editions/2022/LaScene.jpg",
+      "/editions/2022/LLK1.JPG",
+      "/editions/2022/Luluze1.jpg",
+      "/editions/2022/Public9.jpg",
+      "/editions/2022/Public12I20.jpg",
+      "/editions/2022/Superinventur3.jpg",
+      "/editions/2022/Yato1.jpg",
+    ];
     setImages(imageFiles);
   }, []);
 
