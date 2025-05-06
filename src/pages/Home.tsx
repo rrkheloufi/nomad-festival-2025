@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import YouTube from "react-youtube";
 import { Button } from "../components/Button";
 import "../styles/Home.css";
 import { artists } from "./Program";
@@ -33,18 +34,9 @@ export default function Home() {
       setShowVideo(true);
     }, 2000);
 
-    // Check if video loaded correctly
-    const errorTimer = setTimeout(() => {
-      const iframe = document.querySelector("iframe");
-      if (iframe && !iframe.contentWindow) {
-        setVideoError(true);
-      }
-    }, 3000);
-
     return () => {
       clearTimeout(logoTimer);
       clearTimeout(videoTimer);
-      clearTimeout(errorTimer);
     };
   }, []);
 
@@ -63,20 +55,27 @@ export default function Home() {
               showVideo ? "opacity-100" : "opacity-0"
             }`}
           >
-            <video
-              className="absolute top-0 left-0 w-full h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
+            <YouTube
+              videoId="gsqQazFtUl0"
+              className="youtube-iframe"
+              opts={{
+                width: "100%",
+                height: "100%",
+                playerVars: {
+                  autoplay: 1,
+                  mute: 1,
+                  loop: 1,
+                  playlist: "gsqQazFtUl0",
+                  controls: 0,
+                  rel: 0,
+                  showinfo: 0,
+                  modestbranding: 1,
+                  iv_load_policy: 3,
+                  playsinline: 1,
+                },
+              }}
               onError={() => setVideoError(true)}
-            >
-              <source
-                src="https://oi7f2bbbqj1uigqx.public.blob.vercel-storage.com/NomadFestivalCut-XUQoUM5E52vE0nndh5o3yO4RH7M9aX.mp4"
-                type="video/mp4"
-              />
-            </video>
+            />
           </div>
         ) : (
           <div className="w-full h-full bg-black" />
