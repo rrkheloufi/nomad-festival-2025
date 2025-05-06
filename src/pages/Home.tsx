@@ -63,15 +63,20 @@ export default function Home() {
               showVideo ? "opacity-100" : "opacity-0"
             }`}
           >
-            <iframe
-              src="https://www.youtube.com/embed/gsqQazFtUl0?controls=0&autoplay=1&mute=1&loop=1&playlist=gsqQazFtUl0&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-              title="Festival Background Video"
-              className="youtube-iframe"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              data-playsinline="true"
-              data-webkit-playsinline="true"
-              allowFullScreen
-            />
+            <video
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              onError={() => setVideoError(true)}
+            >
+              <source
+                src="https://oi7f2bbbqj1uigqx.public.blob.vercel-storage.com/NomadFestivalCut-XUQoUM5E52vE0nndh5o3yO4RH7M9aX.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
         ) : (
           <div className="w-full h-full bg-black" />
