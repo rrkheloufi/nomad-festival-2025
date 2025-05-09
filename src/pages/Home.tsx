@@ -1,3 +1,4 @@
+import { track } from "@vercel/analytics";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -18,6 +19,12 @@ export default function Home() {
   const [displayedArtists, setDisplayedArtists] = useState<string[]>([]);
 
   useEffect(() => {
+    // Track page view
+    track("home_page_view", {
+      timestamp: new Date().toISOString(),
+      userAgent: navigator.userAgent,
+    });
+
     // Shuffle artists array
     const shuffledArtists = [...artists]
       .sort(() => Math.random() - 0.5)
