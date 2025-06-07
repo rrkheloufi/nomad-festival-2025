@@ -131,6 +131,29 @@ export const artists: Artist[] = [
     spotify:
       "https://open.spotify.com/intl-de/artist/6on9aFPA41KLlYSKTEVyL4?si=-lDqjwZPQfK0pW75koIKhQ",
   },
+  {
+    name: "Garage Band",
+    style: "Rock, Pop-Rock, Funk",
+    image: "/artists/garage_band.png",
+    description:
+      "Salut la compagnie ! Le Garage Band, tel Ulysse, vient réparer tous vos problèmes du quotidien.\n\nLaissez-nous vous raconter quelque chose sur nous, que vous savez sûrement déjà. \n\nEmbarquez dans de vastes trous noirs à bord de nos petits sous-marins, vous vous sentirez comme des femmes riches le temps d'un repas. \nAlors n'ayez peur de rien, pas même des reptiles, et dansez aux rythmes des outils du Garage.",
+  },
+  {
+    name: "Axolotox",
+    style: "DJ set - Pop / Disco",
+    image: "/artists/axolotox.jpg",
+    instagram: "https://www.instagram.com/__axolotox__/",
+    description:
+      "Axolotox en une phrase : \"hating pop music doesn't make you deep\"\n\nBaby DJ depuis 2025, j'ai une passion pop culture et une obsession comédies musicales.\n\nmon but: s'amuser entre copains et copines, tout simplement.\n\nGirly pop, cunty music, female rage, musical theatre, party hits, & more !!",
+  },
+  {
+    name: "Luluze & Friendz",
+    style: "Pop rock alternative",
+    image: "/artists/luluze&friendz.jpg",
+    instagram: "@luluzeeeee",
+    description:
+      "Luluze a réuni ses musiciens préférés (ses amis) pour venir vous chanter de jolies balades popau Nomad Festival. Ils vous attendent pour un moment coloré et joyeux : un concert fait maison plein de bonne humeur et d'amitié",
+  },
 ];
 
 export default function Program() {
