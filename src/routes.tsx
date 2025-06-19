@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import ButtonPage from "./pages/ButtonPage";
 import Contact from "./pages/Contact";
-import Edition2022 from "./pages/Edition2022";
+import Edition2022 from "./pages/editions/Edition2022";
 import Edition2023 from "./pages/editions/Edition2023";
 import Edition2024 from "./pages/editions/Edition2024";
 import FAQ from "./pages/FAQ";

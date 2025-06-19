@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import "../styles/Home.css";
 
 export default function Edition2022() {
   const [images, setImages] = useState<string[]>([]);
@@ -76,18 +75,18 @@ export default function Edition2022() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl font-bold text-festival-primary mb-8">
-            Nomad Festival 2024
+            Nomad Festival 2022
           </h1>
 
           <div className="mb-12">
             <p className="text-festival-light text-lg mb-8">
-              Revivez les meilleurs moments de l'édition 2024 du Nomad Festival.
+              Revivez les meilleurs moments de l'édition 2022 du Nomad Festival.
             </p>
 
             <div className="w-full h-[600px] mb-12">
               <iframe
                 src="https://www.youtube.com/embed/zSQSRK2-Opc?controls=1&rel=0&showinfo=0&modestbranding=1"
-                title="Aftermovie Nomad Festival 2024"
+                title="Aftermovie Nomad Festival 2022"
                 className="w-full h-full rounded-lg"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -109,7 +108,7 @@ export default function Edition2022() {
                 >
                   <img
                     src={image}
-                    alt={`Nomad Festival 2024 - Photo ${index + 1}`}
+                    alt={`Nomad Festival 2022 - Photo ${index + 1}`}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     loading="lazy"
                   />
