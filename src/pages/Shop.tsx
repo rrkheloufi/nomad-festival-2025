@@ -8,7 +8,6 @@ interface Product {
   id: number;
   name: string;
   price: string;
-  description: string;
   images: string[];
 }
 
@@ -17,7 +16,6 @@ const products: Product[] = [
     id: 1,
     name: "T-Shirt Nomad Festival 2025",
     price: "30€",
-    description: "T-shirt officiel du Nomad Festival 2025 en coton bio",
     images: [
       "/shop/nomad/1.png",
       "/shop/nomad/2.png",
@@ -31,7 +29,6 @@ const products: Product[] = [
     id: 2,
     name: "T-Shirt Fabrice & Bouée",
     price: "25€",
-    description: "T-shirt aux couleurs de Fabrice & Bouée 2 Sauvetaj",
     images: [
       "/shop/fabrice/1.jpg",
       "/shop/fabrice/2.png",
@@ -44,14 +41,12 @@ const products: Product[] = [
     id: 3,
     name: "Affiche Nomad Festival 2025",
     price: "5€",
-    description: "Affiche officielle du Nomad Festival 2025",
     images: ["/shop/poster/1.jpg"],
   },
   {
     id: 4,
     name: "Pack T-Shirts",
     price: "50€",
-    description: "Pack complet de t-shirts du festival",
     images: [
       "/shop/pack/2.png",
       "/shop/pack/4.jpg",
@@ -80,19 +75,6 @@ export default function Shop() {
       thumbnail: image,
       originalAlt: `${product.name} - Image ${index + 1}`,
       thumbnailAlt: `${product.name} - Miniature ${index + 1}`,
-      description: (
-        <div className="text-center mt-2">
-          <div className="font-bold text-lg text-white drop-shadow-glow">
-            {product.name}
-          </div>
-          <div className="text-festival-light text-base font-bold">
-            {product.price}
-          </div>
-          <div className="text-xs mt-1" style={{ color: "var(--color-light)" }}>
-            {product.description}
-          </div>
-        </div>
-      ),
     }));
   }, []);
 
@@ -156,12 +138,6 @@ export default function Shop() {
                     <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-glow">
                       {product.name}
                     </h2>
-                    <p
-                      className="text-lg mb-2"
-                      style={{ color: "var(--color-light)" }}
-                    >
-                      {product.description}
-                    </p>
                     <h6 className="text-lg md:text-2xl font-bold text-festival-light">
                       {product.price}
                     </h6>
@@ -179,9 +155,9 @@ export default function Shop() {
             items={galleryItems}
             startIndex={startIndex}
             showPlayButton={false}
-            useBrowserFullscreen={true}
             onScreenChange={handleScreenChange}
             additionalClass="custom-gallery-fullscreen"
+            showThumbnails={false}
           />
         </div>
 
