@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import "../styles/shop-gallery.css";
 
@@ -62,6 +62,20 @@ export default function Shop() {
   const [zoomed, setZoomed] = useState(false);
   const [zoomTouchStartX, setZoomTouchStartX] = useState<number | null>(null);
   const [zoomTouchEndX, setZoomTouchEndX] = useState<number | null>(null);
+
+  // Empêche le scroll du body quand le zoom est activé
+  useEffect(() => {
+    if (zoomed) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup quand le composant se démonte
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [zoomed]);
 
   // Ouvre le mode zoom directement sur le produit cliqué
   const handleProductClick = useCallback((product: Product) => {
@@ -191,61 +205,45 @@ export default function Shop() {
               onTouchMove={handleZoomTouchMove}
               onTouchEnd={handleZoomTouchEnd}
             >
-              <button
-                className="shop-gallery-zoom-arrow left"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePrev();
-                }}
-                disabled={zoomedProduct.images.length <= 1}
-                aria-label="Image précédente"
-              >
-                ◄
-              </button>
-              <button
-                className="shop-gallery-zoom-close"
-                onClick={handleCloseZoom}
-                aria-label="Fermer le zoom"
-              >
-                ✕
-              </button>
-              <img
-                src={zoomedProduct.images[zoomedIndex]}
-                alt={`Zoom ${zoomedIndex + 1}`}
-                className="shop-gallery-zoom-img"
-                draggable={false}
-              />
-              <button
-                className="shop-gallery-zoom-arrow right"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleNext();
-                }}
-                disabled={zoomedProduct.images.length <= 1}
-                aria-label="Image suivante"
-              >
-                ►
-              </button>
-              {/* Miniatures */}
-              {zoomedProduct.images.length > 1 && (
-                <div className="shop-gallery-zoom-thumbs">
-                  {zoomedProduct.images.map((img, idx) => (
-                    <img
-                      key={img}
-                      src={img}
-                      alt={`Miniature ${idx + 1}`}
-                      className={`shop-gallery-zoom-thumb${
-                        zoomedIndex === idx ? " active" : ""
-                      }`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleThumbClick(idx);
-                      }}
-                      draggable={false}
-                    />
-                  ))}
+              {/* Conteneur image + miniatures */}
+              <div className="shop-gallery-zoom-image-container">
+                <div className="shop-gallery-zoom-img-wrapper">
+                  <img
+                    src={zoomedProduct.images[zoomedIndex]}
+                    alt={`Zoom ${zoomedIndex + 1}`}
+                    className="shop-gallery-zoom-img"
+                    draggable={false}
+                  />
+                  <button
+                    className="shop-gallery-zoom-close"
+                    onClick={handleCloseZoom}
+                    aria-label="Fermer le zoom"
+                  >
+                    ✕
+                  </button>
                 </div>
-              )}
+
+                {/* Miniatures */}
+                {zoomedProduct.images.length > 1 && (
+                  <div className="shop-gallery-zoom-thumbs">
+                    {zoomedProduct.images.map((img, idx) => (
+                      <img
+                        key={img}
+                        src={img}
+                        alt={`Miniature ${idx + 1}`}
+                        className={`shop-gallery-zoom-thumb${
+                          zoomedIndex === idx ? " active" : ""
+                        }`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleThumbClick(idx);
+                        }}
+                        draggable={false}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}
