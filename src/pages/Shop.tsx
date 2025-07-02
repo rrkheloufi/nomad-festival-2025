@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 import { Button } from "../components/Button";
 
 interface Product {
@@ -13,68 +15,108 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
-    name: "T-shirt Blanc Regular",
+    name: "T-Shirt Nomad Festival 2025",
     price: "30€",
-    description: "T-shirt officiel du Nomad Festival en coton bio",
+    description: "T-shirt officiel du Nomad Festival 2025 en coton bio",
     images: [
-      "/shop/white_tshirt/1.JPG",
-      "/shop/white_tshirt/2.JPG",
-      "/shop/white_tshirt/3.JPG",
-      "/shop/white_tshirt/4.png",
+      "/shop/nomad/1.png",
+      "/shop/nomad/2.png",
+      "/shop/nomad/3.png",
+      "/shop/nomad/4.jpg",
+      "/shop/nomad/5.jpg",
+      "/shop/nomad/6.jpg",
     ],
   },
   {
     id: 2,
-    name: "T-shirt Bleu Loose",
-    price: "30€",
-    description: "T-shirt loose aux couleurs du festival",
-    images: ["/shop/hat/1.JPG", "/shop/hat/2.JPG", "/shop/hat/3.JPG"],
+    name: "T-Shirt Fabrice & Bouée",
+    price: "25€",
+    description: "T-shirt aux couleurs de Fabrice & Bouée 2 Sauvetaj",
+    images: [
+      "/shop/fabrice/1.jpg",
+      "/shop/fabrice/2.png",
+      "/shop/fabrice/3.jpg",
+      "/shop/fabrice/4.jpg",
+      "/shop/fabrice/5.jpg",
+    ],
+  },
+  {
+    id: 3,
+    name: "Affiche Nomad Festival 2025",
+    price: "5€",
+    description: "Affiche officielle du Nomad Festival 2025",
+    images: ["/shop/poster/1.jpg"],
+  },
+  {
+    id: 4,
+    name: "Pack T-Shirts",
+    price: "50€",
+    description: "Pack complet de t-shirts du festival",
+    images: [
+      "/shop/pack/2.png",
+      "/shop/pack/4.jpg",
+      "/shop/pack/5.jpg",
+      "/shop/pack/9.jpg",
+    ],
   },
 ];
 
 export default function Shop() {
-  const [currentImageIndexes, setCurrentImageIndexes] = useState<
-    Record<number, number>
-  >({});
-  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
-  const [fullscreenProduct, setFullscreenProduct] = useState<Product | null>(
-    null
+  const galleryRef = useRef<
+    | (ImageGallery & {
+        toggleFullScreen: () => void;
+        slideToIndex: (i: number) => void;
+      })
+    | null
+  >(null);
+  const [fullscreen, setFullscreen] = useState(false);
+  const [galleryItems, setGalleryItems] = useState<any[]>([]);
+  const [startIndex, setStartIndex] = useState(0);
+
+  // Construit la liste d'images pour le carrousel à partir d'un produit
+  const buildGalleryItems = useCallback((product: Product) => {
+    return product.images.map((image, index) => ({
+      original: image,
+      thumbnail: image,
+      originalAlt: `${product.name} - Image ${index + 1}`,
+      thumbnailAlt: `${product.name} - Miniature ${index + 1}`,
+      description: (
+        <div className="text-center mt-2">
+          <div className="font-bold text-lg text-white drop-shadow-glow">
+            {product.name}
+          </div>
+          <div className="text-festival-light text-base font-bold">
+            {product.price}
+          </div>
+          <div className="text-xs mt-1" style={{ color: "var(--color-light)" }}>
+            {product.description}
+          </div>
+        </div>
+      ),
+    }));
+  }, []);
+
+  // Ouvre le carrousel en fullscreen natif sur le bon produit
+  const handleProductClick = useCallback(
+    (product: Product) => {
+      const items = buildGalleryItems(product);
+      setGalleryItems(items);
+      setStartIndex(0);
+      setFullscreen(true);
+      setTimeout(() => {
+        if (galleryRef.current) {
+          galleryRef.current.slideToIndex(0);
+          galleryRef.current.toggleFullScreen();
+        }
+      }, 50);
+    },
+    [buildGalleryItems]
   );
 
-  const handleNextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!fullscreenProduct || !fullscreenImage) return;
-    const currentIndex = fullscreenProduct.images.indexOf(fullscreenImage);
-    const nextIndex = (currentIndex + 1) % fullscreenProduct.images.length;
-    setFullscreenImage(fullscreenProduct.images[nextIndex]);
-  };
-
-  const handlePrevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!fullscreenProduct || !fullscreenImage) return;
-    const currentIndex = fullscreenProduct.images.indexOf(fullscreenImage);
-    const prevIndex =
-      (currentIndex - 1 + fullscreenProduct.images.length) %
-      fullscreenProduct.images.length;
-    setFullscreenImage(fullscreenProduct.images[prevIndex]);
-  };
-
-  const handleThumbnailClick = (product: Product, image: string) => {
-    setFullscreenProduct(product);
-    setFullscreenImage(image);
-  };
-
-  const handleImageAreaClick = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const width = rect.width;
-
-    if (x < width / 2) {
-      handlePrevImage(e);
-    } else {
-      handleNextImage(e);
-    }
-  };
+  // Quand on sort du fullscreen natif
+  const handleScreenChange = useCallback((isFullscreen: boolean) => {
+    setFullscreen(isFullscreen);
+  }, []);
 
   return (
     <div className="min-h-screen pt-20 pb-10">
@@ -87,71 +129,35 @@ export default function Shop() {
           Boutique
         </motion.h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => {
-            const currentIndex = currentImageIndexes[product.id] || 0;
-            return (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="relative group"
-              >
-                <div className="relative aspect-square overflow-hidden rounded-lg shop-card">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {products.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="relative group"
+            >
+              <div className="relative overflow-hidden rounded-lg shop-card">
+                <div
+                  className="aspect-square relative overflow-hidden cursor-pointer"
+                  onClick={() => handleProductClick(product)}
+                >
                   <img
-                    src={product.images[currentIndex]}
+                    src={product.images[0]}
                     alt={product.name}
-                    className="w-full h-full object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105"
-                    onClick={() =>
-                      handleThumbnailClick(
-                        product,
-                        product.images[currentIndex]
-                      )
-                    }
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
-
-                  {product.images.length > 1 && (
-                    <>
-                      <button
-                        onClick={(e: React.MouseEvent) => {
-                          e.stopPropagation();
-                          setCurrentImageIndexes((prev) => ({
-                            ...prev,
-                            [product.id]:
-                              ((prev[product.id] || 0) -
-                                1 +
-                                product.images.length) %
-                              product.images.length,
-                          }));
-                        }}
-                        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        ←
-                      </button>
-                      <button
-                        onClick={(e: React.MouseEvent) => {
-                          e.stopPropagation();
-                          setCurrentImageIndexes((prev) => ({
-                            ...prev,
-                            [product.id]:
-                              ((prev[product.id] || 0) + 1) %
-                              product.images.length,
-                          }));
-                        }}
-                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        →
-                      </button>
-                    </>
-                  )}
-
-                  <div className="absolute bottom-0 right-0 bg-black/75 backdrop-blur-sm p-4 text-right max-w-[80%]">
-                    <h6 className="text-1xl font-bold text-white mb-2 drop-shadow-glow">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                </div>
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-glow">
                       {product.name}
-                    </h6>
+                    </h2>
                     <p
-                      className="text-xs mb-4"
+                      className="text-lg mb-2"
                       style={{ color: "var(--color-light)" }}
                     >
                       {product.description}
@@ -161,85 +167,52 @@ export default function Shop() {
                     </h6>
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {fullscreenImage && fullscreenProduct && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => {
-              setFullscreenImage(null);
-              setFullscreenProduct(null);
-            }}
-          >
-            <div className="relative max-w-4xl w-full">
-              <div className="cursor-pointer" onClick={handleImageAreaClick}>
-                <img
-                  src={fullscreenImage}
-                  alt="Vue agrandie"
-                  className="max-w-full max-h-[80vh] object-contain mx-auto"
-                  loading="lazy"
-                />
-              </div>
-
-              {fullscreenProduct.images.length > 1 && (
-                <>
-                  <button
-                    onClick={handlePrevImage}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors"
-                  >
-                    ←
-                  </button>
-                  <button
-                    onClick={handleNextImage}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors"
-                  >
-                    →
-                  </button>
-                </>
-              )}
-
-              <div className="flex justify-center mt-4 space-x-2">
-                {fullscreenProduct.images.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={(e: React.MouseEvent) => {
-                      e.stopPropagation();
-                      setFullscreenImage(image);
-                    }}
-                    className={`w-16 h-16 rounded-lg overflow-hidden transition-transform ${
-                      fullscreenImage === image
-                        ? "ring-2 ring-primary scale-110"
-                        : "opacity-50 hover:opacity-100"
-                    }`}
-                  >
-                    <img
-                      src={image}
-                      alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </button>
-                ))}
-              </div>
-
+        {/* Carrousel plein écran natif, invisible tant qu'il n'est pas activé */}
+        <div style={{ display: fullscreen ? "block" : "none" }}>
+          <ImageGallery
+            ref={galleryRef}
+            items={galleryItems}
+            startIndex={startIndex}
+            showPlayButton={false}
+            showFullscreenButton={false}
+            showThumbnails={galleryItems.length > 1}
+            showNav={galleryItems.length > 1}
+            showBullets={false}
+            showIndex={true}
+            slideInterval={3000}
+            slideDuration={450}
+            additionalClass="custom-gallery-fullscreen"
+            useBrowserFullscreen={true}
+            onScreenChange={handleScreenChange}
+            renderLeftNav={(onClick, disabled) => (
               <button
-                onClick={() => {
-                  setFullscreenImage(null);
-                  setFullscreenProduct(null);
-                }}
-                className="absolute top-4 right-4 text-white hover:text-primary transition-colors text-xl"
+                type="button"
+                className="image-gallery-custom-nav left"
+                onClick={onClick}
+                disabled={disabled}
+                aria-label="Image précédente"
               >
-                ✕
+                &#8592;
               </button>
-            </div>
-          </motion.div>
-        )}
+            )}
+            renderRightNav={(onClick, disabled) => (
+              <button
+                type="button"
+                className="image-gallery-custom-nav right"
+                onClick={onClick}
+                disabled={disabled}
+                aria-label="Image suivante"
+              >
+                &#8594;
+              </button>
+            )}
+          />
+        </div>
 
         <div className="flex justify-center">
           <a

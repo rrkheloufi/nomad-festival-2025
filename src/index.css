@@ -1,5 +1,6 @@
 /* Import centralized style files */
 @import './styles/animations.css';
+@import './styles/cards.css';
 
 @font-face {
   font-family: 'Letter Magic';

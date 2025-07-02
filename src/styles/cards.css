@@ -2,7 +2,8 @@
 
 /* Artist card */
 .artist-card {
-  @apply relative bg-background/50 transition-all duration-300;
+  @apply relative transition-all duration-300;
+  background-color: rgba(30, 0, 35, 0.5);
   box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
               0 0 20px rgba(var(--color-primary-rgb), 0.1),
               0 0 30px rgba(var(--color-primary-rgb), 0.05);
@@ -60,7 +61,8 @@
 
 /* Shop card */
 .shop-card {
-  @apply relative bg-background/50 transition-all duration-300;
+  @apply relative transition-all duration-300;
+  background-color: rgba(30, 0, 35, 0.5);
   box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
               0 0 20px rgba(var(--color-primary-rgb), 0.1),
               0 0 30px rgba(var(--color-primary-rgb), 0.05);
@@ -72,4 +74,235 @@
               0 0 30px rgba(var(--color-primary-rgb), 0.2),
               0 0 45px rgba(var(--color-primary-rgb), 0.1);
   border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Styles pour react-image-gallery */
+.custom-gallery .image-gallery-slide {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.custom-gallery .image-gallery-image {
+  border-radius: 8px;
+}
+
+.custom-gallery .image-gallery-thumbnail {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.custom-gallery .image-gallery-thumbnail.active {
+  border: 2px solid var(--color-primary);
+}
+
+.custom-gallery .image-gallery-thumbnail:hover {
+  border: 2px solid var(--color-primary);
+  opacity: 0.8;
+}
+
+.custom-gallery .image-gallery-fullscreen-button,
+.custom-gallery .image-gallery-left-nav,
+.custom-gallery .image-gallery-right-nav {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.custom-gallery .image-gallery-fullscreen-button:hover,
+.custom-gallery .image-gallery-left-nav:hover,
+.custom-gallery .image-gallery-right-nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.custom-gallery .image-gallery-index {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+}
+
+/* Styles pour la galerie simplifiée */
+.custom-gallery-simple .image-gallery-slide {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.custom-gallery-simple .image-gallery-image {
+  border-radius: 8px;
+}
+
+.custom-gallery-simple .image-gallery-thumbnail {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.custom-gallery-simple .image-gallery-thumbnail.active {
+  border: 2px solid var(--color-primary);
+}
+
+.custom-gallery-simple .image-gallery-thumbnail:hover {
+  border: 2px solid var(--color-primary);
+  opacity: 0.8;
+}
+
+.custom-gallery-simple .image-gallery-fullscreen-button {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.custom-gallery-simple .image-gallery-fullscreen-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.custom-gallery-simple .image-gallery-left-nav,
+.custom-gallery-simple .image-gallery-right-nav {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+}
+
+.custom-gallery-simple .image-gallery-index {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+}
+
+/* Styles pour la galerie responsive dans la modal */
+.custom-gallery-simple .image-gallery {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-gallery-simple .image-gallery-slide-wrapper {
+  flex: 1;
+  min-height: 0;
+}
+
+.custom-gallery-simple .image-gallery-slide {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-gallery-simple .image-gallery-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.custom-gallery-simple .image-gallery-thumbnails-wrapper {
+  flex-shrink: 0;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 1024px) {
+  .custom-gallery-simple .image-gallery {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .custom-gallery-simple .image-gallery-slide {
+    height: 100%;
+  }
+  
+  .custom-gallery-simple .image-gallery-image {
+    max-height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+/* Styles pour le carrousel fullscreen natif */
+.custom-gallery-fullscreen .image-gallery {
+  height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.custom-gallery-fullscreen .image-gallery-slide-wrapper {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-gallery-fullscreen .image-gallery-slide {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-gallery-fullscreen .image-gallery-image {
+  max-height: 80vh;
+  max-width: 90vw;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: #111;
+}
+
+.custom-gallery-fullscreen .image-gallery-thumbnails-wrapper {
+  flex-shrink: 0;
+  background: #111;
+  padding: 8px 0;
+}
+
+.custom-gallery-fullscreen .image-gallery-custom-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.custom-gallery-fullscreen .image-gallery-custom-nav.left {
+  left: 16px;
+}
+.custom-gallery-fullscreen .image-gallery-custom-nav.right {
+  right: 16px;
+}
+.custom-gallery-fullscreen .image-gallery-custom-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .custom-gallery-fullscreen .image-gallery-image {
+    max-height: 50vh;
+    max-width: 98vw;
+  }
+  .custom-gallery-fullscreen .image-gallery-custom-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+    left: 4px;
+    right: 4px;
+  }
+  .custom-gallery-fullscreen .image-gallery-custom-nav.left {
+    left: 4px;
+  }
+  .custom-gallery-fullscreen .image-gallery-custom-nav.right {
+    right: 4px;
+  }
 }

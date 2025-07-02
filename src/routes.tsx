@@ -8,7 +8,7 @@ import Edition2024 from "./pages/editions/Edition2024";
 import FAQ from "./pages/FAQ";
 import Home from "./pages/Home";
 import Program from "./pages/Program";
-import ShopNotAvailable from "./pages/ShopNotAvailable";
+import Shop from "./pages/Shop";
 import Tickets from "./pages/Tickets";
 
 export function AppRoutes() {
@@ -16,7 +16,7 @@ export function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/shop" element={<ShopNotAvailable />} />
+      <Route path="/shop" element={<Shop />} />
       <Route path="/program" element={<Program />} />
       <Route path="/tickets" element={<Tickets />} />
       <Route path="/faq" element={<FAQ />} />
