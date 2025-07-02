@@ -100,6 +100,13 @@ export default function Shop() {
     setFullscreen(isFullscreen);
   }, []);
 
+  // Fonction pour sortir du fullscreen natif
+  const handleExitFullscreen = useCallback(() => {
+    if (galleryRef.current) {
+      galleryRef.current.toggleFullScreen();
+    }
+  }, []);
+
   return (
     <div className="min-h-screen pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -149,7 +156,11 @@ export default function Shop() {
         </div>
 
         {/* Carrousel plein écran natif, invisible tant qu'il n'est pas activé */}
-        <div style={{ display: fullscreen ? "block" : "none" }}>
+        <div
+          style={{ display: fullscreen ? "block" : "none" }}
+          className="custom-gallery-fullscreen"
+        >
+          {/* Bouton croix pour quitter le fullscreen */}
           <ImageGallery
             ref={galleryRef}
             items={galleryItems}
@@ -157,9 +168,17 @@ export default function Shop() {
             showPlayButton={false}
             onScreenChange={handleScreenChange}
             additionalClass="custom-gallery-fullscreen"
-            showThumbnails={false}
             useBrowserFullscreen={true}
-          />
+          />{" "}
+          {fullscreen && (
+            <button
+              className="gallery-exit-btn"
+              onClick={handleExitFullscreen}
+              aria-label="Fermer le plein écran"
+            >
+              ✕
+            </button>
+          )}
         </div>
 
         <div className="flex justify-center">

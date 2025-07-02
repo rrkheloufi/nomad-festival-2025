@@ -84,3 +84,30 @@
   min-height: 100vh;
 }
 /* End of Selection */
+
+/* Start of Selection */
+.gallery-exit-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.gallery-exit-btn:hover {
+  background: rgba(0, 0, 0, 1);
+  transform: scale(1.1);
+}
