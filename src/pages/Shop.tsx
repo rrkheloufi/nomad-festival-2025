@@ -86,6 +86,16 @@ export default function Shop() {
     [handleCloseZoom]
   );
 
+  // Ferme le zoom si clic en dehors de l'image
+  const handleZoomContentClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (e.target === e.currentTarget) {
+        handleCloseZoom();
+      }
+    },
+    [handleCloseZoom]
+  );
+
   // Navigation flèches dans le zoom
   const handlePrev = useCallback(() => {
     if (!zoomedProduct) return;
@@ -158,9 +168,9 @@ export default function Shop() {
                     <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-glow">
                       {product.name}
                     </h2>
-                    <h6 className="text-lg md:text-2xl font-bold text-festival-light">
+                    <h4 className="text-2xl font-bold text-white mb-2 drop-shadow-glow">
                       {product.price}
-                    </h6>
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -171,32 +181,18 @@ export default function Shop() {
         {/* Overlay zoom (plein écran direct) */}
         {zoomed && zoomedProduct && (
           <div
-            className="shop-gallery-backdrop"
-            style={{ zIndex: 100 }}
+            className="shop-gallery-zoom-overlay"
             onClick={handleZoomBackdrop}
           >
             <div
-              style={{
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100vw",
-                height: "100vh",
-              }}
+              className="shop-gallery-zoom-content"
+              onClick={handleZoomContentClick}
               onTouchStart={handleZoomTouchStart}
               onTouchMove={handleZoomTouchMove}
               onTouchEnd={handleZoomTouchEnd}
             >
               <button
-                className="shop-gallery-arrow left"
-                style={{
-                  position: "absolute",
-                  left: 20,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  zIndex: 101,
-                }}
+                className="shop-gallery-zoom-arrow left"
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePrev();
@@ -204,47 +200,23 @@ export default function Shop() {
                 disabled={zoomedProduct.images.length <= 1}
                 aria-label="Image précédente"
               >
-                &#8592;
+                ◄
               </button>
               <button
-                className="shop-gallery-close"
-                style={{
-                  top: 20,
-                  right: 20,
-                  position: "absolute",
-                  zIndex: 101,
-                }}
+                className="shop-gallery-zoom-close"
                 onClick={handleCloseZoom}
                 aria-label="Fermer le zoom"
               >
                 ✕
               </button>
-              {/* Index */}
-              <div className="shop-gallery-index" style={{ zIndex: 101 }}>
-                {zoomedIndex + 1} / {zoomedProduct.images.length}
-              </div>
               <img
                 src={zoomedProduct.images[zoomedIndex]}
                 alt={`Zoom ${zoomedIndex + 1}`}
-                style={{
-                  maxWidth: "95vw",
-                  maxHeight: "90vh",
-                  objectFit: "contain",
-                  borderRadius: 16,
-                  boxShadow: "0 4px 32px rgba(0,0,0,0.7)",
-                  background: "#111",
-                }}
+                className="shop-gallery-zoom-img"
                 draggable={false}
               />
               <button
-                className="shop-gallery-arrow right"
-                style={{
-                  position: "absolute",
-                  right: 20,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  zIndex: 101,
-                }}
+                className="shop-gallery-zoom-arrow right"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleNext();
@@ -252,26 +224,17 @@ export default function Shop() {
                 disabled={zoomedProduct.images.length <= 1}
                 aria-label="Image suivante"
               >
-                &#8594;
+                ►
               </button>
               {/* Miniatures */}
               {zoomedProduct.images.length > 1 && (
-                <div
-                  className="shop-gallery-thumbs"
-                  style={{
-                    position: "absolute",
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    zIndex: 101,
-                  }}
-                >
+                <div className="shop-gallery-zoom-thumbs">
                   {zoomedProduct.images.map((img, idx) => (
                     <img
                       key={img}
                       src={img}
                       alt={`Miniature ${idx + 1}`}
-                      className={`shop-gallery-thumb${
+                      className={`shop-gallery-zoom-thumb${
                         zoomedIndex === idx ? " active" : ""
                       }`}
                       onClick={(e) => {
