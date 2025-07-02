@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { useCallback, useRef, useState } from "react";
-import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
+import { useCallback, useState } from "react";
 import { Button } from "../components/Button";
+import "../styles/shop-gallery.css";
 
 interface Product {
   id: number;
@@ -57,55 +56,69 @@ const products: Product[] = [
 ];
 
 export default function Shop() {
-  const galleryRef = useRef<
-    | (ImageGallery & {
-        toggleFullScreen: () => void;
-        slideToIndex: (i: number) => void;
-      })
-    | null
-  >(null);
-  const [fullscreen, setFullscreen] = useState(false);
-  const [galleryItems, setGalleryItems] = useState<any[]>([]);
-  const [startIndex, setStartIndex] = useState(0);
+  // Mode zoom : produit sélectionné et index de l'image
+  const [zoomedProduct, setZoomedProduct] = useState<Product | null>(null);
+  const [zoomedIndex, setZoomedIndex] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
+  const [zoomTouchStartX, setZoomTouchStartX] = useState<number | null>(null);
+  const [zoomTouchEndX, setZoomTouchEndX] = useState<number | null>(null);
 
-  // Construit la liste d'images pour le carrousel à partir d'un produit
-  const buildGalleryItems = useCallback((product: Product) => {
-    return product.images.map((image, index) => ({
-      original: image,
-      thumbnail: image,
-      originalAlt: `${product.name} - Image ${index + 1}`,
-      thumbnailAlt: `${product.name} - Miniature ${index + 1}`,
-    }));
+  // Ouvre le mode zoom directement sur le produit cliqué
+  const handleProductClick = useCallback((product: Product) => {
+    setZoomedProduct(product);
+    setZoomedIndex(0);
+    setZoomed(true);
   }, []);
 
-  // Ouvre le carrousel en fullscreen natif sur le bon produit
-  const handleProductClick = useCallback(
-    (product: Product) => {
-      const items = buildGalleryItems(product);
-      setGalleryItems(items);
-      setStartIndex(0);
-      setFullscreen(true);
-      setTimeout(() => {
-        if (galleryRef.current) {
-          galleryRef.current.slideToIndex(0);
-          galleryRef.current.toggleFullScreen();
-        }
-      }, 50);
+  // Ferme le zoom
+  const handleCloseZoom = useCallback(() => {
+    setZoomed(false);
+    setZoomedProduct(null);
+    setZoomedIndex(0);
+  }, []);
+  // Ferme le zoom si clic en dehors
+  const handleZoomBackdrop = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (e.target === e.currentTarget) {
+        handleCloseZoom();
+      }
     },
-    [buildGalleryItems]
+    [handleCloseZoom]
   );
 
-  // Quand on sort du fullscreen natif
-  const handleScreenChange = useCallback((isFullscreen: boolean) => {
-    setFullscreen(isFullscreen);
+  // Navigation flèches dans le zoom
+  const handlePrev = useCallback(() => {
+    if (!zoomedProduct) return;
+    setZoomedIndex(
+      (prev) =>
+        (prev - 1 + zoomedProduct.images.length) % zoomedProduct.images.length
+    );
+  }, [zoomedProduct]);
+  const handleNext = useCallback(() => {
+    if (!zoomedProduct) return;
+    setZoomedIndex((prev) => (prev + 1) % zoomedProduct.images.length);
+  }, [zoomedProduct]);
+  // Miniatures dans le zoom
+  const handleThumbClick = useCallback((idx: number) => {
+    setZoomedIndex(idx);
   }, []);
-
-  // Fonction pour sortir du fullscreen natif
-  const handleExitFullscreen = useCallback(() => {
-    if (galleryRef.current) {
-      galleryRef.current.toggleFullScreen();
+  // Swipe dans le zoom
+  const handleZoomTouchStart = (e: React.TouchEvent) => {
+    setZoomTouchStartX(e.touches[0].clientX);
+    setZoomTouchEndX(null);
+  };
+  const handleZoomTouchMove = (e: React.TouchEvent) => {
+    setZoomTouchEndX(e.touches[0].clientX);
+  };
+  const handleZoomTouchEnd = () => {
+    if (zoomTouchStartX !== null && zoomTouchEndX !== null && zoomedProduct) {
+      const delta = zoomTouchStartX - zoomTouchEndX;
+      if (delta > 50) handleNext(); // swipe left
+      else if (delta < -50) handlePrev(); // swipe right
     }
-  }, []);
+    setZoomTouchStartX(null);
+    setZoomTouchEndX(null);
+  };
 
   return (
     <div className="min-h-screen pt-20 pb-10">
@@ -155,31 +168,124 @@ export default function Shop() {
           ))}
         </div>
 
-        {/* Carrousel plein écran natif, invisible tant qu'il n'est pas activé */}
-        <div
-          style={{ display: fullscreen ? "block" : "none" }}
-          className="custom-gallery-fullscreen"
-        >
-          {/* Bouton croix pour quitter le fullscreen */}
-          <ImageGallery
-            ref={galleryRef}
-            items={galleryItems}
-            startIndex={startIndex}
-            showPlayButton={false}
-            onScreenChange={handleScreenChange}
-            additionalClass="custom-gallery-fullscreen"
-            useBrowserFullscreen={true}
-          />{" "}
-          {fullscreen && (
-            <button
-              className="gallery-exit-btn"
-              onClick={handleExitFullscreen}
-              aria-label="Fermer le plein écran"
+        {/* Overlay zoom (plein écran direct) */}
+        {zoomed && zoomedProduct && (
+          <div
+            className="shop-gallery-backdrop"
+            style={{ zIndex: 100 }}
+            onClick={handleZoomBackdrop}
+          >
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100vw",
+                height: "100vh",
+              }}
+              onTouchStart={handleZoomTouchStart}
+              onTouchMove={handleZoomTouchMove}
+              onTouchEnd={handleZoomTouchEnd}
             >
-              ✕
-            </button>
-          )}
-        </div>
+              <button
+                className="shop-gallery-arrow left"
+                style={{
+                  position: "absolute",
+                  left: 20,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 101,
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrev();
+                }}
+                disabled={zoomedProduct.images.length <= 1}
+                aria-label="Image précédente"
+              >
+                &#8592;
+              </button>
+              <button
+                className="shop-gallery-close"
+                style={{
+                  top: 20,
+                  right: 20,
+                  position: "absolute",
+                  zIndex: 101,
+                }}
+                onClick={handleCloseZoom}
+                aria-label="Fermer le zoom"
+              >
+                ✕
+              </button>
+              {/* Index */}
+              <div className="shop-gallery-index" style={{ zIndex: 101 }}>
+                {zoomedIndex + 1} / {zoomedProduct.images.length}
+              </div>
+              <img
+                src={zoomedProduct.images[zoomedIndex]}
+                alt={`Zoom ${zoomedIndex + 1}`}
+                style={{
+                  maxWidth: "95vw",
+                  maxHeight: "90vh",
+                  objectFit: "contain",
+                  borderRadius: 16,
+                  boxShadow: "0 4px 32px rgba(0,0,0,0.7)",
+                  background: "#111",
+                }}
+                draggable={false}
+              />
+              <button
+                className="shop-gallery-arrow right"
+                style={{
+                  position: "absolute",
+                  right: 20,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 101,
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                disabled={zoomedProduct.images.length <= 1}
+                aria-label="Image suivante"
+              >
+                &#8594;
+              </button>
+              {/* Miniatures */}
+              {zoomedProduct.images.length > 1 && (
+                <div
+                  className="shop-gallery-thumbs"
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    zIndex: 101,
+                  }}
+                >
+                  {zoomedProduct.images.map((img, idx) => (
+                    <img
+                      key={img}
+                      src={img}
+                      alt={`Miniature ${idx + 1}`}
+                      className={`shop-gallery-thumb${
+                        zoomedIndex === idx ? " active" : ""
+                      }`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleThumbClick(idx);
+                      }}
+                      draggable={false}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="flex justify-center">
           <a
