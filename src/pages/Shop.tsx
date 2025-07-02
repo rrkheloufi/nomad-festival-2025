@@ -158,6 +158,7 @@ export default function Shop() {
             onScreenChange={handleScreenChange}
             additionalClass="custom-gallery-fullscreen"
             showThumbnails={false}
+            useBrowserFullscreen={true}
           />
         </div>
 
