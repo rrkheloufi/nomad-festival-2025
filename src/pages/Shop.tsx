@@ -179,44 +179,15 @@ export default function Shop() {
             items={galleryItems}
             startIndex={startIndex}
             showPlayButton={false}
-            showFullscreenButton={false}
-            showThumbnails={galleryItems.length > 1}
-            showNav={galleryItems.length > 1}
-            showBullets={false}
-            showIndex={true}
-            slideInterval={3000}
-            slideDuration={450}
-            additionalClass="custom-gallery-fullscreen"
             useBrowserFullscreen={true}
             onScreenChange={handleScreenChange}
-            renderLeftNav={(onClick, disabled) => (
-              <button
-                type="button"
-                className="image-gallery-custom-nav left"
-                onClick={onClick}
-                disabled={disabled}
-                aria-label="Image précédente"
-              >
-                &#8592;
-              </button>
-            )}
-            renderRightNav={(onClick, disabled) => (
-              <button
-                type="button"
-                className="image-gallery-custom-nav right"
-                onClick={onClick}
-                disabled={disabled}
-                aria-label="Image suivante"
-              >
-                &#8594;
-              </button>
-            )}
+            additionalClass="custom-gallery-fullscreen"
           />
         </div>
 
         <div className="flex justify-center">
           <a
-            href="https://www.google.fr"
+            href="https://www.helloasso.com/associations/nomad-festival/boutiques/nomad-boutique-2025"
             target="_blank"
             rel="noopener noreferrer"
             className="block my-12"
