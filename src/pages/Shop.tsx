@@ -53,6 +53,12 @@ const products: Product[] = [
       "/shop/pack/9.jpg",
     ],
   },
+  {
+    id: 5,
+    name: "Planche de stickers Nomad",
+    price: "5€",
+    images: ["/shop/stickers/1.jpg"],
+  },
 ];
 
 export default function Shop() {
