@@ -204,14 +204,17 @@
   height: 60px;
   object-fit: cover;
   border-radius: 8px;
-  border: 2px solid transparent;
   cursor: pointer;
-  opacity: 0.7;
-  transition: border 0.2s, opacity 0.2s;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+.shop-gallery-zoom-thumb:hover {
+  transform: scale(1.05);
+  border-color: rgba(255,255,255,0.3);
 }
 .shop-gallery-zoom-thumb.active {
-  border: 2px solid var(--color-primary, #A51E25);
-  opacity: 1;
+  border-color: var(--color-primary, #A51E25);
+  transform: scale(1.1);
 }
 .shop-gallery-zoom-arrow {
   position: absolute;
@@ -255,11 +258,12 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
 }
 
 .shop-gallery-zoom-close:hover {
   background: rgba(0,0,0,0.9);
+  transform: scale(1.1);
 }
 
 @media (max-width: 900px) {

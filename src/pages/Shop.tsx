@@ -194,25 +194,37 @@ export default function Shop() {
 
         {/* Overlay zoom (plein écran direct) */}
         {zoomed && zoomedProduct && (
-          <div
+          <motion.div
             className="shop-gallery-zoom-overlay"
             onClick={handleZoomBackdrop}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            <div
+            <motion.div
               className="shop-gallery-zoom-content"
               onClick={handleZoomContentClick}
               onTouchStart={handleZoomTouchStart}
               onTouchMove={handleZoomTouchMove}
               onTouchEnd={handleZoomTouchEnd}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               {/* Conteneur image + miniatures */}
               <div className="shop-gallery-zoom-image-container">
                 <div className="shop-gallery-zoom-img-wrapper">
-                  <img
+                  <motion.img
+                    key={`${zoomedProduct.id}-${zoomedIndex}`}
                     src={zoomedProduct.images[zoomedIndex]}
                     alt={`Zoom ${zoomedIndex + 1}`}
                     className="shop-gallery-zoom-img"
                     draggable={false}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                   />
                   <button
                     className="shop-gallery-zoom-close"
@@ -225,9 +237,14 @@ export default function Shop() {
 
                 {/* Miniatures */}
                 {zoomedProduct.images.length > 1 && (
-                  <div className="shop-gallery-zoom-thumbs">
+                  <motion.div
+                    className="shop-gallery-zoom-thumbs"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                  >
                     {zoomedProduct.images.map((img, idx) => (
-                      <img
+                      <motion.img
                         key={img}
                         src={img}
                         alt={`Miniature ${idx + 1}`}
@@ -239,13 +256,17 @@ export default function Shop() {
                           handleThumbClick(idx);
                         }}
                         draggable={false}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.2 }}
+                        whileHover={{ scale: 1.05 }}
                       />
                     ))}
-                  </div>
+                  </motion.div>
                 )}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
 
         <div className="flex justify-center">
