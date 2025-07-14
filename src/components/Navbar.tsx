@@ -1,7 +1,7 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -17,6 +17,7 @@ interface MenuItem {
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { themeMode } = useTheme();
+  const location = useLocation();
 
   const menuItems: MenuItem[] = [
     {
@@ -37,8 +38,28 @@ export function Navbar() {
         { name: "Nomad 2022", path: "/edition-2022" },
       ],
     },
+    { name: "Covoiturage", path: "/covoiturage" },
     { name: "Contact", path: "/contact" },
   ];
+
+  // Fonction pour vérifier si un item est actif
+  const isActive = (
+    path?: string,
+    submenu?: { name: string; path: string }[]
+  ) => {
+    if (path) {
+      return location.pathname === path;
+    }
+    if (submenu) {
+      return submenu.some((item) => location.pathname === item.path);
+    }
+    return false;
+  };
+
+  // Fonction pour vérifier si un sous-item est actif
+  const isSubItemActive = (path: string) => {
+    return location.pathname === path;
+  };
 
   return (
     <nav
@@ -69,11 +90,30 @@ export function Navbar() {
               {menuItems.map((item) => (
                 <div key={item.name} className="relative group">
                   {item.path ? (
-                    <Link to={item.path} className="nav-link">
+                    <Link
+                      to={item.path}
+                      className={`nav-link transition-all duration-200 ${
+                        isActive(item.path) ? "font-bold" : ""
+                      }`}
+                      style={{
+                        color: isActive(item.path)
+                          ? "var(--color-primary)"
+                          : "var(--color-text)",
+                      }}
+                    >
                       <strong className="uppercase">{item.name}</strong>
                     </Link>
                   ) : (
-                    <div className="nav-link cursor-pointer">
+                    <div
+                      className={`nav-link cursor-pointer transition-all duration-200 ${
+                        isActive(undefined, item.submenu) ? "font-bold" : ""
+                      }`}
+                      style={{
+                        color: isActive(undefined, item.submenu)
+                          ? "var(--color-primary)"
+                          : "var(--color-text)",
+                      }}
+                    >
                       <strong className="uppercase">{item.name}</strong>
                     </div>
                   )}
@@ -90,7 +130,14 @@ export function Navbar() {
                         <Link
                           key={subItem.name}
                           to={subItem.path}
-                          className="nav-link block px-4 py-2 text-sm"
+                          className={`nav-link block px-4 py-2 text-sm transition-all duration-200 ${
+                            isSubItemActive(subItem.path) ? "font-bold" : ""
+                          }`}
+                          style={{
+                            color: isSubItemActive(subItem.path)
+                              ? "var(--color-primary)"
+                              : "var(--color-text)",
+                          }}
                         >
                           <strong className="uppercase">{subItem.name}</strong>
                         </Link>
@@ -138,13 +185,29 @@ export function Navbar() {
                 {item.path ? (
                   <Link
                     to={item.path}
-                    className="nav-link block px-3 py-2 text-base"
+                    className={`nav-link block px-3 py-2 text-base transition-all duration-200 ${
+                      isActive(item.path) ? "font-bold" : ""
+                    }`}
+                    style={{
+                      color: isActive(item.path)
+                        ? "var(--color-primary)"
+                        : "var(--color-text)",
+                    }}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ) : (
-                  <div className="nav-link block px-3 py-2 text-base">
+                  <div
+                    className={`nav-link block px-3 py-2 text-base transition-all duration-200 ${
+                      isActive(undefined, item.submenu) ? "font-bold" : ""
+                    }`}
+                    style={{
+                      color: isActive(undefined, item.submenu)
+                        ? "var(--color-primary)"
+                        : "var(--color-text)",
+                    }}
+                  >
                     {item.name}
                   </div>
                 )}
@@ -154,7 +217,14 @@ export function Navbar() {
                       <Link
                         key={subItem.name}
                         to={subItem.path}
-                        className="nav-link block px-3 py-2 text-sm"
+                        className={`nav-link block px-3 py-2 text-sm transition-all duration-200 ${
+                          isSubItemActive(subItem.path) ? "font-bold" : ""
+                        }`}
+                        style={{
+                          color: isSubItemActive(subItem.path)
+                            ? "var(--color-primary)"
+                            : "var(--color-text)",
+                        }}
                         onClick={() => setIsOpen(false)}
                       >
                         {subItem.name}

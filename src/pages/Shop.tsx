@@ -61,6 +61,48 @@ const products: Product[] = [
   },
 ];
 
+// Composant d'alerte pour la date limite
+const DeadlineAlert = () => (
+  <motion.div
+    className="border p-4 mb-8 rounded-md flex flex-col items-center justify-center"
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    style={{
+      borderColor: "var(--color-primary)",
+      backgroundColor: "transparent",
+      color: "var(--color-primary)",
+      fontFamily: "Brixton",
+      textAlign: "center",
+    }}
+  >
+    <strong
+      className="text-lg flex items-center"
+      style={{
+        color: "var(--color-primary)",
+        height: "100%",
+        fontSize: "1.2rem",
+      }}
+    >
+      <span
+        style={{ marginRight: "0.5em", fontSize: "1.3em" }}
+        role="img"
+        aria-label="attention"
+      >
+        ⚠️
+      </span>
+      Attention - Les commandes ne sont possibles que jusqu'au 1er août 2025
+      <span
+        style={{ marginLeft: "0.5em", fontSize: "1.3em" }}
+        role="img"
+        aria-label="attention"
+      >
+        ⚠️
+      </span>
+    </strong>
+  </motion.div>
+);
+
 export default function Shop() {
   // Mode zoom : produit sélectionné et index de l'image
   const [zoomedProduct, setZoomedProduct] = useState<Product | null>(null);
@@ -161,6 +203,9 @@ export default function Shop() {
           Boutique
         </motion.h1>
 
+        {/* Alerte avant les produits */}
+        <DeadlineAlert />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {products.map((product, index) => (
             <motion.div
@@ -197,7 +242,6 @@ export default function Shop() {
             </motion.div>
           ))}
         </div>
-
         {/* Overlay zoom (plein écran direct) */}
         {zoomed && zoomedProduct && (
           <motion.div
@@ -275,12 +319,16 @@ export default function Shop() {
           </motion.div>
         )}
 
+        {/* Alerte après les produits */}
+        <div style={{ marginTop: "30px" }}>
+          <DeadlineAlert />
+        </div>
         <div className="flex justify-center">
           <a
             href="https://www.helloasso.com/associations/nomad-festival/boutiques/nomad-boutique-2025"
             target="_blank"
             rel="noopener noreferrer"
-            className="block my-12"
+            className="block my-0"
           >
             <Button variant="primary" size="lg" className="mx-auto">
               Commander
