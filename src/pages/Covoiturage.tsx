@@ -5,7 +5,20 @@ import "../styles/covoiturage.css";
 const SHEET_URL =
   "https://docs.google.com/spreadsheets/d/1l44K1Imt4wQ0FokdFK9_aHNAVx4yPZAMoXX8MGSP8-8/edit?usp=sharing";
 
+function isMobile() {
+  if (typeof window === "undefined") return false;
+  return window.innerWidth < 768;
+}
+
 export default function Covoiturage() {
+  // Gestion du clic sur l'iframe sur mobile
+  const handleMobileIframeClick = (e: React.MouseEvent) => {
+    if (isMobile()) {
+      window.open(SHEET_URL, "_blank");
+      e.preventDefault();
+    }
+  };
+
   return (
     <div className="min-h-screen pt-20 pb-10 flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -83,18 +96,32 @@ export default function Covoiturage() {
                   Modifier directement sur le fichier
                 </Button>
               </a>
-              <div className="covoit-sheet-iframe-wrapper mt-6">
+              <div
+                className="covoit-sheet-iframe-wrapper mt-6"
+                style={{ position: "relative" }}
+              >
                 <iframe
                   src={SHEET_URL}
                   title="Covoiturage Nomad"
                   className="covoit-sheet-iframe"
                   allowFullScreen
-                  style={{
-                    minHeight: "700px",
-                    height: "70vh",
-                    maxWidth: "1100px",
-                  }}
+                  onClick={handleMobileIframeClick}
+                  style={{ pointerEvents: isMobile() ? "none" : "auto" }}
                 ></iframe>
+                {typeof window !== "undefined" && isMobile() && (
+                  <div
+                    onClick={handleMobileIframeClick}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      zIndex: 2,
+                      cursor: "pointer",
+                    }}
+                  ></div>
+                )}
               </div>
             </div>
           </div>
