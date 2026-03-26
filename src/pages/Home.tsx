@@ -4,7 +4,6 @@ import { useInView } from "react-intersection-observer";
 import YouTube from "react-youtube";
 import { Button } from "../components/Button";
 import "../styles/Home.css";
-import { artists } from "./Program";
 
 export default function Home() {
   const [ref, inView] = useInView({
@@ -15,16 +14,16 @@ export default function Home() {
   const [videoError, setVideoError] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showLogo, setShowLogo] = useState(false);
-  const [displayedArtists, setDisplayedArtists] = useState<string[]>([]);
+  // const [displayedArtists, setDisplayedArtists] = useState<string[]>([]);
 
   useEffect(() => {
     // Track page view
 
     // Shuffle artists array
-    const shuffledArtists = [...artists]
-      .sort(() => Math.random() - 0.5)
-      .map((artist) => artist.name);
-    setDisplayedArtists(shuffledArtists);
+    // const shuffledArtists = [...artists]
+    //   .sort(() => Math.random() - 0.5)
+    //   .map((artist) => artist.name);
+    // setDisplayedArtists(shuffledArtists);
 
     // Show logo after 1.5 seconds
     const logoTimer = setTimeout(() => {
@@ -43,9 +42,9 @@ export default function Home() {
   }, []);
 
   // Calculate the width of the artist banner
-  const artistsString = [...displayedArtists, ...displayedArtists].join(
-    "     •     ",
-  );
+  // const artistsString = [...displayedArtists, ...displayedArtists].join(
+  //   "     •     ",
+  // );
 
   return (
     <div className="relative min-h-screen">
@@ -140,7 +139,7 @@ export default function Home() {
           </motion.div>
 
           <motion.p
-            className="font-poppins font-semibold uppercase tracking-widest text-sm md:text-base mb-6"
+            className="font-poppins font-semibold uppercase tracking-widest text-base md:text-xl mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5 }}
@@ -187,7 +186,7 @@ export default function Home() {
         </motion.div>
 
         {/* Scrolling Artist Banner */}
-        <div
+        {/* <div
           className="w-full py-5 overflow-hidden"
           style={{
             backgroundColor: "rgba(var(--color-primary-rgb), 0.12)",
@@ -215,7 +214,7 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </div>
+          </div> */}
       </div>
     </div>
   );

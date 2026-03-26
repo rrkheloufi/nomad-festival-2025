@@ -59,7 +59,7 @@ export function Navbar() {
 
   const isActive = (
     path?: string,
-    submenu?: { name: string; path: string }[]
+    submenu?: { name: string; path: string }[],
   ) => {
     if (path) return location.pathname === path;
     if (submenu) return submenu.some((item) => location.pathname === item.path);
@@ -83,15 +83,16 @@ export function Navbar() {
         backgroundColor: navBg,
         backdropFilter: navBackdrop,
         borderBottom: navBorder,
-        boxShadow: isTransparent
-          ? "none"
-          : "0 2px 16px rgba(0,0,0,0.15)",
+        boxShadow: isTransparent ? "none" : "0 2px 16px rgba(0,0,0,0.15)",
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0 transition-opacity hover:opacity-80">
+          <Link
+            to="/"
+            className="flex-shrink-0 transition-opacity hover:opacity-80"
+          >
             <motion.img
               src={
                 themeMode === "dark"
@@ -116,10 +117,10 @@ export function Navbar() {
                         color: isActive(item.path)
                           ? "var(--color-primary)"
                           : isTransparent
-                          ? "rgba(var(--color-light-rgb, 250, 230, 235), 0.95)"
-                          : "var(--color-text)",
+                            ? "rgba(var(--color-light-rgb, 250, 230, 235), 0.95)"
+                            : "var(--color-text)",
                         fontWeight: isActive(item.path) ? 700 : 600,
-                        fontSize: "0.8rem",
+                        fontSize: "0.9rem",
                         letterSpacing: "0.05em",
                       }}
                     >
@@ -132,10 +133,12 @@ export function Navbar() {
                         color: isActive(undefined, item.submenu)
                           ? "var(--color-primary)"
                           : isTransparent
-                          ? "rgba(var(--color-light-rgb, 250, 230, 235), 0.95)"
-                          : "var(--color-text)",
-                        fontWeight: isActive(undefined, item.submenu) ? 700 : 600,
-                        fontSize: "0.8rem",
+                            ? "rgba(var(--color-light-rgb, 250, 230, 235), 0.95)"
+                            : "var(--color-text)",
+                        fontWeight: isActive(undefined, item.submenu)
+                          ? 700
+                          : 600,
+                        fontSize: "0.9rem",
                         letterSpacing: "0.05em",
                       }}
                     >
@@ -147,7 +150,8 @@ export function Navbar() {
                     <div
                       className="absolute top-full left-1/2 -translate-x-1/2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[160px] rounded-xl shadow-xl py-2 mt-1"
                       style={{
-                        backgroundColor: "rgba(var(--color-background-rgb), 0.98)",
+                        backgroundColor:
+                          "rgba(var(--color-background-rgb), 0.98)",
                         backdropFilter: "blur(12px)",
                         border: "1px solid rgba(var(--color-primary-rgb), 0.2)",
                       }}
@@ -161,7 +165,9 @@ export function Navbar() {
                             color: isSubItemActive(subItem.path)
                               ? "var(--color-primary)"
                               : "var(--color-text)",
-                            fontWeight: isSubItemActive(subItem.path) ? 700 : 500,
+                            fontWeight: isSubItemActive(subItem.path)
+                              ? 700
+                              : 500,
                             borderTop:
                               idx > 0
                                 ? "1px solid rgba(var(--color-primary-rgb), 0.1)"
@@ -244,7 +250,9 @@ export function Navbar() {
                 {item.submenu && (
                   <div
                     className="ml-4 border-l-2 pl-3 mb-1"
-                    style={{ borderColor: "rgba(var(--color-primary-rgb), 0.3)" }}
+                    style={{
+                      borderColor: "rgba(var(--color-primary-rgb), 0.3)",
+                    }}
                   >
                     {item.submenu.map((subItem) => (
                       <Link

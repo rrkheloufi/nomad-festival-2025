@@ -89,12 +89,11 @@ export default function Tickets() {
               <ul className="space-y-2 mb-8">
                 <li className="text-festival-light flex items-center">
                   <span className="text-festival-primary mr-2">✓</span>
-                  Accès au festival et au camping dès vendredi 22/08 - 16h
+                  Accès au festival et au camping dès vendredi 21/08 - 16h
                 </li>
                 <li className="text-festival-light flex items-center">
                   <span className="text-festival-primary mr-2">✓</span>
-                  Repas du vendredi soir, samedi midi, samedi soir et dimanche
-                  midi inclus
+                  Repas du vendredi soir, samedi midi et samedi soir inclus
                 </li>
               </ul>
 
@@ -131,11 +130,11 @@ export default function Tickets() {
                   <ul className="space-y-2 mb-8">
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>
-                      Accès au festival et au camping dès vendredi 22/08 - 16h
+                      Accès au festival et au camping dès vendredi 21/08 - 16h
                     </li>
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>
-                      Repas du vendredi soir et samedi midi inclus
+                      Repas du vendredi soir inclus
                     </li>
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>
@@ -175,16 +174,16 @@ export default function Tickets() {
                   <ul className="space-y-2 mb-8">
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>
-                      Accès au festival et au camping dès samedi 23/08 - 12h
+                      Accès au festival et au camping dès samedi 22/08 - 12h
                     </li>
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>
-                      Repas du samedi soir et dimanche midi inclus
+                      Repas du samedi soir inclus
                     </li>
                     <li className="text-festival-light flex items-center">
-                      <span className="text-festival-primary mr-2">✓</span>
+                      <span className="text-festival-primary mr-2">✕</span>
                       Si vous arrivez le samedi avant midi, pensez à vous
-                      prendre à manger !
+                      prendre à manger&nbsp;!
                     </li>
                   </ul>
                 </div>
@@ -222,7 +221,7 @@ export default function Tickets() {
                   <ul className="space-y-2 mb-8">
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>
-                      Accès au festival à partir de 16h le vendredi 22/08
+                      Accès au festival à partir de 16h le vendredi 21/08
                     </li>
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>
@@ -266,7 +265,7 @@ export default function Tickets() {
                   <ul className="space-y-2 mb-8">
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>
-                      Accès au festival à partir de 14h le samedi 23/08
+                      Accès au festival à partir de 14h le samedi 22/08
                     </li>
                     <li className="text-festival-light flex items-center">
                       <span className="text-festival-primary mr-2">✓</span>

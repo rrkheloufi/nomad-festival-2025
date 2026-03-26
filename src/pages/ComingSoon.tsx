@@ -128,8 +128,8 @@ export default function ComingSoon({ title }: ComingSoonProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="mt-3 text-sm"
-          style={{ color: "var(--color-text)", opacity: 0.45 }}
+          className="mt-3 text-base md:text-lg"
+          style={{ color: "var(--color-text)", opacity: 0.6 }}
         >
           On prépare quelque chose de beau, revenez bientôt !
         </motion.p>

@@ -18,7 +18,7 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/shop" element={<ComingSoon title="Boutique" />} />
-      <Route path="/program" element={<ComingSoon title="Programme 2026" />} />
+      <Route path="/program" element={<ComingSoon title="Prog' 2026" />} />
       <Route path="/tickets" element={<Tickets />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/contact" element={<Contact />} />
