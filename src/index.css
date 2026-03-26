@@ -1,6 +1,7 @@
 /* Import centralized style files */
 @import './styles/animations.css';
 @import './styles/cards.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap');
 
 @font-face {
   font-family: 'Letter Magic';
@@ -68,15 +69,45 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
+    scroll-behavior: smooth;
+
     /* Default theme variables (will be overridden by ThemeContext) */
-    --color-background: #1E0023;
-    --color-text: #FFF8EE;
-    --color-primary: #A51E25;
-    --color-secondary: #6B46C1;
-    --color-accent: #00D1B2;
-    --color-dark: #1E0023;
-    --color-light: #FFF8EE;
+    --color-background: #00007D;
+    --color-text: #FAE6EB;
+    --color-primary: #FF0FAA;
+    --color-secondary: #828CFA;
+    --color-accent: #FF0FAA;
+    --color-dark: #00007D;
+    --color-light: #FAE6EB;
+
+    /* RGB fallbacks for rgba() usage */
+    --color-background-rgb: 0, 0, 125;
+    --color-text-rgb: 250, 230, 235;
+    --color-primary-rgb: 255, 15, 170;
+    --color-secondary-rgb: 130, 140, 250;
+    --color-dark-rgb: 0, 0, 125;
+
+    /* Spacing rhythm */
+    --space-section: 5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(var(--color-primary-rgb), 0.4);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--color-primary-rgb), 0.7);
   }
 
   body {
@@ -88,7 +119,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-magic;
+    @apply font-poppins;
     color: var(--color-primary);
   }
 }
@@ -142,11 +173,11 @@
 
 /* Typography styles */
 .heading {
-  font-family: 'Letter Magic', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
   color: var(--color-primary);
-  text-shadow: 0 0 5px rgba(var(--color-primary-rgb), 0.3),
-               0 0 10px rgba(var(--color-primary-rgb), 0.2),
-               0 0 15px rgba(var(--color-primary-rgb), 0.1);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .heading-1 {
@@ -221,31 +252,35 @@
   }
 }
 
-.paragraph, p, li {
-  font-size: 1.4rem !important;
-  line-height: 1.5;
+.paragraph {
+  font-size: 1.1rem;
+  line-height: 1.7;
   font-family: 'Brixton', sans-serif;
   color: var(--color-text);
   margin-bottom: 1rem;
 }
 
+p, li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-family: 'Brixton', sans-serif;
+  color: var(--color-text);
+}
+
 .section-title {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  font-weight: 800;
   margin-bottom: 2rem;
   text-align: center;
-  font-family: 'Letter Magic', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.02em;
   color: var(--color-primary);
-  text-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.5),
-               0 0 20px rgba(var(--color-primary-rgb), 0.3),
-               0 0 30px rgba(var(--color-primary-rgb), 0.1);
 }
 
 @media (min-width: 768px) {
   .section-title {
-    font-size: 3rem;
-    line-height: 1;
+    font-size: 3.5rem;
   }
 }
 
@@ -288,84 +323,75 @@
 /* Card styles */
 .artist-card {
   position: relative;
-  background-color: rgba(30, 0, 35, 0.5);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
-              0 0 20px rgba(var(--color-primary-rgb), 0.1),
-              0 0 30px rgba(var(--color-primary-rgb), 0.05);
+  background-color: rgba(var(--color-dark-rgb, 0, 0, 125), 0.6);
+  border-left: 3px solid rgba(var(--color-primary-rgb), 0.6);
+  border-radius: 0 12px 12px 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .artist-card:hover {
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
-              0 0 30px rgba(var(--color-primary-rgb), 0.2),
-              0 0 45px rgba(var(--color-primary-rgb), 0.1);
+  transform: translateY(-3px);
+  border-left-color: rgba(var(--color-primary-rgb), 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(var(--color-primary-rgb), 0.15);
 }
 
 .artist-dialog {
-  box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.3),
-              0 0 40px rgba(var(--color-primary-rgb), 0.2),
-              0 0 60px rgba(var(--color-primary-rgb), 0.1);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+  border-radius: 16px;
 }
 
 .ticket-card {
   position: relative;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
-              0 0 20px rgba(var(--color-primary-rgb), 0.1),
-              0 0 30px rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  border-left: 3px solid rgba(var(--color-secondary-rgb, 130, 140, 250), 0.7);
+  border-radius: 0 12px 12px 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  border-right: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.08);
 }
 
 .ticket-card:hover {
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
-              0 0 30px rgba(var(--color-primary-rgb), 0.2),
-              0 0 45px rgba(var(--color-primary-rgb), 0.1);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border-left-color: rgba(var(--color-primary-rgb), 1);
 }
 
 .faq-card {
   position: relative;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.1),
-              0 0 20px rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+  border-radius: 12px;
 }
 
 .faq-card:hover {
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.2),
-              0 0 30px rgba(var(--color-primary-rgb), 0.1),
-              0 0 45px rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-color: rgba(var(--color-primary-rgb), 0.3);
 }
 
 .faq-contact-card {
-  box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.15),
-              0 0 40px rgba(var(--color-primary-rgb), 0.1);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  border-radius: 16px;
 }
 
 .shop-card {
   position: relative;
-  background-color: rgba(30, 0, 35, 0.5);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
-              0 0 20px rgba(var(--color-primary-rgb), 0.1),
-              0 0 30px rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  background-color: rgba(var(--color-dark-rgb, 0, 0, 125), 0.5);
+  border-left: 3px solid rgba(var(--color-secondary-rgb, 130, 140, 250), 0.6);
+  border-radius: 0 12px 12px 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  border-right: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.08);
 }
 
 .shop-card:hover {
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
-              0 0 30px rgba(var(--color-primary-rgb), 0.2),
-              0 0 45px rgba(var(--color-primary-rgb), 0.1);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  transform: translateY(-3px);
+  border-left-color: rgba(var(--color-secondary-rgb, 130, 140, 250), 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }

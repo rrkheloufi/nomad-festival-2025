@@ -18,24 +18,24 @@ export interface Theme {
 export const themes: Record<ThemeMode, Theme> = {
   dark: {
     colors: {
-      background: '#1E0023',
-      text: '#FFF8EE',
-      primary: '#ABFFAF',
-      secondary: '#6B46C1',
-      accent: '#00D1B2',
-      dark: '#1E0023',
-      light: '#FFF8EE'
+      background: '#00007D',
+      text: '#FAE6EB',
+      primary: '#FAC346',
+      secondary: '#828CFA',
+      accent: '#FAC346',
+      dark: '#00007D',
+      light: '#FAE6EB'
     }
   },
   light: {
     colors: {
-      background: '#FFF8EE',
-      text: '#1E0023',
-      primary: '#A51E25',
-      secondary: '#6B46C1',
-      accent: '#00D1B2',
-      dark: '#1E0023',
-      light: '#FFF8EE'
+      background: '#FAE6EB',
+      text: '#00007D',
+      primary: '#FF0FAA',
+      secondary: '#828CFA',
+      accent: '#FF0FAA',
+      dark: '#00007D',
+      light: '#FAE6EB'
     }
   }
 };

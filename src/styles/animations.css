@@ -1,7 +1,8 @@
 /* Animation styles */
 
 @keyframes gradient {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -41,7 +42,8 @@
 }
 
 .drop-shadow-glow {
-  text-shadow: 0 0 10px rgba(165, 30, 37, 0.5),
-               0 0 20px rgba(165, 30, 37, 0.3),
-               0 0 30px rgba(165, 30, 37, 0.1);
+  text-shadow:
+    0 0 10px rgba(var(--color-primary-rgb), 0.5),
+    0 0 20px rgba(var(--color-primary-rgb), 0.3),
+    0 0 30px rgba(var(--color-primary-rgb), 0.1);
 }

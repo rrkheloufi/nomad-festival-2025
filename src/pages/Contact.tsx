@@ -1,4 +1,4 @@
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import { Button } from "../components/Button";
@@ -28,10 +28,10 @@ export default function Contact() {
                     Email
                   </h3>
                   <a
-                    href="mailto:nomad.festivalfr@gmail.com"
+                    href="mailto:festival.nomadfr@gmail.com"
                     className="text-festival-primary hover:text-festival-primary/80 transition-colors text-lg"
                   >
-                    nomad.festivalfr@gmail.com
+                    festival.nomadfr@gmail.com
                   </a>
                 </div>
                 <div>
@@ -47,6 +47,15 @@ export default function Contact() {
                       className="text-festival-light hover:text-festival-primary transition-colors text-2xl"
                     >
                       <FontAwesomeIcon icon={faInstagram} />
+                    </motion.a>
+                    <motion.a
+                      href="https://www.youtube.com/@NomadFestivalfr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      className="text-festival-light hover:text-festival-primary transition-colors text-2xl"
+                    >
+                      <FontAwesomeIcon icon={faYoutube} />
                     </motion.a>
                   </div>
                 </div>
@@ -80,7 +89,7 @@ export default function Contact() {
 
             <div className="flex justify-center mt-6">
               <a
-                href="mailto:nomad.festivalfr@gmail.com?subject=Rejoindre l'équipe Nomad Festival"
+                href="mailto:festival.nomadfr@gmail.com?subject=Rejoindre l'équipe Nomad Festival"
                 className="btn-primary"
               >
                 <Button variant="outline" size="lg" className="mx-auto">

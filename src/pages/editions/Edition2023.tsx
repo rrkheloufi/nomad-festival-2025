@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Edition2023() {
   const [images, setImages] = useState<string[]>([]);
@@ -8,11 +8,11 @@ export default function Edition2023() {
 
   useEffect(() => {
     const imageFiles = [
-      '/editions/2023/IMG_8357.JPG',
-      '/editions/2023/IMG_8390.JPG',
-      '/editions/2023/IMG_8359.JPG',
-      '/editions/2023/IMG_8391.JPG',
-      '/editions/2023/IMG_4279.PNG'
+      "/editions/2023/IMG_8357.webp",
+      "/editions/2023/IMG_8390.webp",
+      "/editions/2023/IMG_8359.webp",
+      "/editions/2023/IMG_8391.webp",
+      "/editions/2023/IMG_4279.webp",
     ];
     setImages(imageFiles);
   }, []);
@@ -22,14 +22,14 @@ export default function Edition2023() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
+    show: { opacity: 1, y: 0 },
   };
 
   const handleImageClick = (image: string, index: number) => {
@@ -40,7 +40,9 @@ export default function Edition2023() {
   const handlePrevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-    setSelectedImage(images[(currentImageIndex - 1 + images.length) % images.length]);
+    setSelectedImage(
+      images[(currentImageIndex - 1 + images.length) % images.length],
+    );
   };
 
   const handleNextImage = (e: React.MouseEvent) => {
@@ -53,7 +55,7 @@ export default function Edition2023() {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const width = rect.width;
-    
+
     if (x < width / 2) {
       handlePrevImage(e);
     } else {
@@ -62,18 +64,27 @@ export default function Edition2023() {
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-10">
+    <div className="min-h-screen pt-24 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl font-bold text-festival-primary mb-8">Nomad Festival 2023</h1>
-          
+          <p
+            className="font-poppins font-bold uppercase tracking-widest text-xs mb-3"
+            style={{ color: "var(--color-secondary)" }}
+          >
+            Éditions précédentes
+          </p>
+          <h1 className="text-4xl font-bold text-festival-primary mb-8">
+            Nomad Festival 2023
+          </h1>
+
           <div className="mb-12">
             <p className="text-festival-light text-lg mb-8">
-              Retour sur l'édition 2023 du Nomad Festival, un moment inoubliable de partage et de musique.
+              Retour sur l'édition 2023 du Nomad Festival, un moment inoubliable
+              de partage et de musique.
             </p>
 
             <div className="w-full h-[600px] mb-12">
@@ -86,7 +97,7 @@ export default function Edition2023() {
               />
             </div>
 
-            <motion.div 
+            <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
               variants={container}
               initial="hidden"
@@ -113,15 +124,12 @@ export default function Edition2023() {
       </div>
 
       {selectedImage && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-full max-h-full">
-            <div 
-              className="cursor-pointer"
-              onClick={handleImageAreaClick}
-            >
+            <div className="cursor-pointer" onClick={handleImageAreaClick}>
               <img
                 src={selectedImage}
                 alt="Vue agrandie"

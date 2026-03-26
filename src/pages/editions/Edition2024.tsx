@@ -8,22 +8,22 @@ export default function Edition2024() {
 
   useEffect(() => {
     const imageFiles = [
-      "/editions/2024/DSC_1112.JPG",
-      "/editions/2024/DSC_1122.JPG",
-      "/editions/2024/DSC_1142.JPG",
-      "/editions/2024/DSC_1146.JPG",
-      "/editions/2024/DSC_1165.JPG",
-      "/editions/2024/DSC_1199.JPG",
-      "/editions/2024/DSC_1200.JPG",
-      "/editions/2024/DSC_1233.JPG",
-      "/editions/2024/DSC_1235.JPG",
-      "/editions/2024/DSC_1241.JPG",
-      "/editions/2024/DSC_1335.JPG",
-      "/editions/2024/DSC_1356.JPG",
-      "/editions/2024/DSC_1395-EDIT.jpg",
-      "/editions/2024/DSC_1417.JPG",
-      "/editions/2024/DSC_1437.JPG",
-      "/editions/2024/DSC_1457.JPG",
+      "/editions/2024/DSC_1112.webp",
+      "/editions/2024/DSC_1122.webp",
+      "/editions/2024/DSC_1142.webp",
+      "/editions/2024/DSC_1146.webp",
+      "/editions/2024/DSC_1165.webp",
+      "/editions/2024/DSC_1199.webp",
+      "/editions/2024/DSC_1200.webp",
+      "/editions/2024/DSC_1233.webp",
+      "/editions/2024/DSC_1235.webp",
+      "/editions/2024/DSC_1241.webp",
+      "/editions/2024/DSC_1335.webp",
+      "/editions/2024/DSC_1356.webp",
+      "/editions/2024/DSC_1395-EDIT.webp",
+      "/editions/2024/DSC_1417.webp",
+      "/editions/2024/DSC_1437.webp",
+      "/editions/2024/DSC_1457.webp",
     ];
     setImages(imageFiles);
   }, []);
@@ -52,7 +52,7 @@ export default function Edition2024() {
     e.stopPropagation();
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     setSelectedImage(
-      images[(currentImageIndex - 1 + images.length) % images.length]
+      images[(currentImageIndex - 1 + images.length) % images.length],
     );
   };
 
@@ -75,13 +75,19 @@ export default function Edition2024() {
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-10">
+    <div className="min-h-screen pt-24 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+          <p
+            className="font-poppins font-bold uppercase tracking-widest text-xs mb-3"
+            style={{ color: "var(--color-secondary)" }}
+          >
+            Éditions précédentes
+          </p>
           <h1 className="text-4xl font-bold text-festival-primary mb-8">
             Nomad Festival 2024
           </h1>

@@ -1,11 +1,19 @@
 import { motion } from "framer-motion";
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
-import { useTheme } from "../context/ThemeContext";
 
 export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 export type ButtonSize = "sm" | "md" | "lg";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+/** Framer Motion redéfinit certains handlers (gestes, animations) — incompatibles avec le DOM. */
+type ConflictingMotionButtonKeys =
+  | "onDrag"
+  | "onDragStart"
+  | "onDragEnd"
+  | "onAnimationStart"
+  | "onAnimationEnd";
+
+interface ButtonProps
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, ConflictingMotionButtonKeys> {
   children: ReactNode;
   variant?: ButtonVariant;
   size?: ButtonSize;
@@ -27,61 +35,57 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       isLoading = false,
       className = "",
       disabled,
+      style,
+      ...rest
     },
     ref
   ) => {
-    const { themeMode } = useTheme();
-
-    // Base styles
     const baseStyles =
-      "font-brixton font-bold rounded-lg transition-all duration-300 flex items-center justify-center";
+      "font-poppins font-700 rounded-full transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer select-none";
 
-    // Size styles
     const sizeStyles = {
-      sm: "text-sm px-3 py-1.5",
-      md: "text-base px-5 py-2.5",
-      lg: "text-lg px-6 py-3",
+      sm: "text-xs px-4 py-1.5 tracking-wide",
+      md: "text-sm px-6 py-2.5 tracking-wide",
+      lg: "text-base px-8 py-3.5 tracking-wide",
     };
 
-    // Variant styles with theme-based text color
-    const getVariantStyles = () => {
-      const textColor = themeMode === "dark" ? "text-dark" : "text-light";
-
-      switch (variant) {
-        case "primary":
-          return `bg-primary ${textColor} hover:brightness-110 active:brightness-90 
-                 shadow-md hover:shadow-lg active:shadow-sm`;
-        case "secondary":
-          return `bg-secondary ${textColor} hover:brightness-110 active:brightness-90 
-                 shadow-md hover:shadow-lg active:shadow-sm`;
-        case "outline":
-          return `border-2 border-primary text-primary hover:bg-primary/10 
-                 active:bg-primary/20`;
-        case "ghost":
-          return `text-primary hover:bg-primary/10 active:bg-primary/20`;
-        default:
-          return "";
-      }
+    const variantStyles: Record<ButtonVariant, React.CSSProperties> = {
+      primary: {
+        backgroundColor: "var(--color-primary)",
+        color: "var(--color-dark)",
+        fontWeight: 700,
+        boxShadow: "0 2px 12px rgba(var(--color-primary-rgb), 0.3)",
+        border: "2px solid transparent",
+      },
+      secondary: {
+        backgroundColor: "var(--color-secondary)",
+        color: "var(--color-light)",
+        fontWeight: 700,
+        boxShadow: "0 2px 12px rgba(var(--color-secondary-rgb, 130, 140, 250), 0.3)",
+        border: "2px solid transparent",
+      },
+      outline: {
+        backgroundColor: "transparent",
+        color: "var(--color-primary)",
+        fontWeight: 700,
+        border: "2px solid var(--color-primary)",
+      },
+      ghost: {
+        backgroundColor: "transparent",
+        color: "var(--color-primary)",
+        fontWeight: 600,
+        border: "2px solid transparent",
+      },
     };
 
-    // Width styles
     const widthStyles = fullWidth ? "w-full" : "";
 
-    // Disabled styles
     const disabledStyles =
       disabled || isLoading
-        ? "opacity-60 cursor-not-allowed pointer-events-none"
+        ? "opacity-50 cursor-not-allowed pointer-events-none"
         : "";
 
-    // Combine all styles
-    const buttonStyles = `
-      ${baseStyles} 
-      ${sizeStyles[size]} 
-      ${getVariantStyles()} 
-      ${widthStyles} 
-      ${disabledStyles} 
-      ${className}
-    `;
+    const buttonStyles = `${baseStyles} ${sizeStyles[size]} ${widthStyles} ${disabledStyles} ${className}`;
 
     const MotionButton = motion.button;
 
@@ -90,12 +94,27 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={buttonStyles}
         disabled={disabled || isLoading}
-        whileHover={disabled || isLoading ? undefined : { scale: 1.03 }}
+        style={{ ...variantStyles[variant], ...style }}
+        whileHover={
+          disabled || isLoading
+            ? undefined
+            : {
+                scale: 1.03,
+                y: -1,
+                boxShadow:
+                  variant === "primary"
+                    ? "0 6px 24px rgba(var(--color-primary-rgb), 0.4)"
+                    : variant === "secondary"
+                    ? "0 6px 24px rgba(var(--color-secondary-rgb, 130, 140, 250), 0.4)"
+                    : "none",
+              }
+        }
         whileTap={disabled || isLoading ? undefined : { scale: 0.97 }}
+        {...rest}
       >
         {isLoading && (
           <svg
-            className="animate-spin -ml-1 mr-2 h-4 w-4"
+            className="animate-spin h-4 w-4"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -107,23 +126,23 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               r="10"
               stroke="currentColor"
               strokeWidth="4"
-            ></circle>
+            />
             <path
               className="opacity-75"
               fill="currentColor"
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            ></path>
+            />
           </svg>
         )}
 
         {icon && iconPosition === "left" && !isLoading && (
-          <span className="mr-2">{icon}</span>
+          <span className="flex-shrink-0">{icon}</span>
         )}
 
-        {children}
+        <span>{children}</span>
 
         {icon && iconPosition === "right" && (
-          <span className="ml-2">{icon}</span>
+          <span className="flex-shrink-0">{icon}</span>
         )}
       </MotionButton>
     );

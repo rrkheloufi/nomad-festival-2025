@@ -1,79 +1,89 @@
-/* Card styles */
+/* Card styles - refined */
 
-/* Artist card */
 .artist-card {
-  @apply relative transition-all duration-300;
-  background-color: rgba(30, 0, 35, 0.5);
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
-              0 0 20px rgba(var(--color-primary-rgb), 0.1),
-              0 0 30px rgba(var(--color-primary-rgb), 0.05);
+  @apply relative;
+  background-color: rgba(var(--color-dark-rgb, 0, 0, 125), 0.6);
+  border-left: 3px solid rgba(var(--color-primary-rgb), 0.6);
+  border-radius: 0 12px 12px 0;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-left-color 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .artist-card:hover {
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
-              0 0 30px rgba(var(--color-primary-rgb), 0.2),
-              0 0 45px rgba(var(--color-primary-rgb), 0.1);
+  transform: translateY(-3px);
+  border-left-color: rgba(var(--color-primary-rgb), 1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(var(--color-primary-rgb), 0.15);
 }
 
 .artist-dialog {
-  box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.3),
-              0 0 40px rgba(var(--color-primary-rgb), 0.2),
-              0 0 60px rgba(var(--color-primary-rgb), 0.1);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+  border-radius: 16px;
 }
 
-/* Ticket card */
 .ticket-card {
-  @apply relative transition-all duration-300;
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
-              0 0 20px rgba(var(--color-primary-rgb), 0.1),
-              0 0 30px rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  @apply relative;
+  border-left: 3px solid rgba(var(--color-secondary-rgb, 130, 140, 250), 0.7);
+  border-radius: 0 12px 12px 0;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  border-right: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.08);
 }
 
 .ticket-card:hover {
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
-              0 0 30px rgba(var(--color-primary-rgb), 0.2),
-              0 0 45px rgba(var(--color-primary-rgb), 0.1);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border-left-color: rgba(var(--color-primary-rgb), 1);
 }
 
-/* FAQ card */
 .faq-card {
-  @apply relative transition-all duration-300;
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.1),
-              0 0 20px rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  @apply relative;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+  border-radius: 12px;
 }
 
 .faq-card:hover {
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.2),
-              0 0 30px rgba(var(--color-primary-rgb), 0.1),
-              0 0 45px rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-color: rgba(var(--color-primary-rgb), 0.3);
 }
 
 .faq-contact-card {
-  box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.15),
-              0 0 40px rgba(var(--color-primary-rgb), 0.1);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  border-radius: 16px;
 }
 
-/* Shop card */
 .shop-card {
-  @apply relative transition-all duration-300;
-  background-color: rgba(30, 0, 35, 0.5);
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2),
-              0 0 20px rgba(var(--color-primary-rgb), 0.1),
-              0 0 30px rgba(var(--color-primary-rgb), 0.05);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  @apply relative;
+  background-color: rgba(var(--color-dark-rgb, 0, 0, 125), 0.5);
+  border-left: 3px solid rgba(var(--color-secondary-rgb, 130, 140, 250), 0.6);
+  border-radius: 0 12px 12px 0;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  border-right: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.08);
 }
 
 .shop-card:hover {
-  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4),
-              0 0 30px rgba(var(--color-primary-rgb), 0.2),
-              0 0 45px rgba(var(--color-primary-rgb), 0.1);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  transform: translateY(-3px);
+  border-left-color: rgba(var(--color-secondary-rgb, 130, 140, 250), 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* Start of Selection */
@@ -102,7 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
   opacity: 1;
 }

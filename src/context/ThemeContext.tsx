@@ -6,6 +6,22 @@ interface ThemeContextType {
   toggleTheme: () => void;
 }
 
+const THEME_STORAGE_KEY = 'theme';
+
+/** Thème par défaut selon l'heure locale : clair de 7h à 19h, sombre sinon. */
+function getThemeFromTime(): ThemeMode {
+  const hour = new Date().getHours();
+  return hour >= 7 && hour < 19 ? 'light' : 'dark';
+}
+
+function getInitialTheme(): ThemeMode {
+  const saved = localStorage.getItem(THEME_STORAGE_KEY) as ThemeMode | null;
+  if (saved === 'light' || saved === 'dark') {
+    return saved;
+  }
+  return getThemeFromTime();
+}
+
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 interface ThemeProviderProps {
@@ -13,20 +29,39 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  // Get initial theme from localStorage or default to 'dark'
-  const [themeMode, setThemeMode] = useState<ThemeMode>(() => {
-    const savedTheme = localStorage.getItem('theme') as ThemeMode;
-    return savedTheme || 'dark';
-  });
+  const [themeMode, setThemeMode] = useState<ThemeMode>(getInitialTheme);
 
-  // Toggle between dark and light mode
+  // Toggle between dark and light mode (préférence persistée)
   const toggleTheme = () => {
-    setThemeMode((prevMode) => (prevMode === 'dark' ? 'light' : 'dark'));
+    setThemeMode((prevMode) => {
+      const next = prevMode === 'dark' ? 'light' : 'dark';
+      localStorage.setItem(THEME_STORAGE_KEY, next);
+      return next;
+    });
   };
 
-  // Update localStorage and apply theme CSS variables when theme changes
+  // Sans préférence enregistrée, suivre l'heure (ex. passage 7h / 19h avec l'onglet ouvert)
   useEffect(() => {
-    localStorage.setItem('theme', themeMode);
+    const hasUserPreference = (): boolean => {
+      const v = localStorage.getItem(THEME_STORAGE_KEY);
+      return v === 'light' || v === 'dark';
+    };
+
+    if (hasUserPreference()) {
+      return;
+    }
+
+    const sync = () => {
+      const next = getThemeFromTime();
+      setThemeMode((prev) => (prev !== next ? next : prev));
+    };
+
+    const id = window.setInterval(sync, 60_000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  // Apply theme CSS variables when theme changes
+  useEffect(() => {
     
     // Apply theme colors as CSS variables
     const root = document.documentElement;
@@ -47,9 +82,11 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : null;
     };
     
-    root.style.setProperty('--color-background-rgb', hexToRgb(theme.colors.background) || '30, 0, 35');
-    root.style.setProperty('--color-text-rgb', hexToRgb(theme.colors.text) || '255, 248, 238');
-    root.style.setProperty('--color-primary-rgb', hexToRgb(theme.colors.primary) || '165, 30, 37');
+    root.style.setProperty('--color-background-rgb', hexToRgb(theme.colors.background) || '0, 0, 125');
+    root.style.setProperty('--color-text-rgb', hexToRgb(theme.colors.text) || '250, 230, 235');
+    root.style.setProperty('--color-primary-rgb', hexToRgb(theme.colors.primary) || '255, 15, 170');
+    root.style.setProperty('--color-secondary-rgb', hexToRgb(theme.colors.secondary) || '130, 140, 250');
+    root.style.setProperty('--color-dark-rgb', hexToRgb(theme.colors.dark) || '0, 0, 125');
     
     // Add theme class to body
     document.body.className = themeMode;

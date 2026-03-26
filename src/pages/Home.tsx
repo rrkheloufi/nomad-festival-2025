@@ -44,7 +44,7 @@ export default function Home() {
 
   // Calculate the width of the artist banner
   const artistsString = [...displayedArtists, ...displayedArtists].join(
-    "     •     "
+    "     •     ",
   );
 
   return (
@@ -85,7 +85,13 @@ export default function Home() {
       </div>
 
       {/* Content Overlay */}
-      <div className="relative min-h-screen flex flex-col items-center justify-center bg-black bg-opacity-60">
+      <div
+        className="relative min-h-screen flex flex-col items-center justify-center"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,20,0.5) 60%, rgba(0,0,60,0.7) 100%)",
+        }}
+      >
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
@@ -133,25 +139,33 @@ export default function Home() {
             />
           </motion.div>
 
-          <motion.h3
-            className="text-xl md:text-3xl text-white font-bold mb-4"
+          <motion.p
+            className="font-poppins font-semibold uppercase tracking-widest text-sm md:text-base mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5 }}
             style={{
-              paddingBottom: 30,
+              color: "var(--color-primary)",
+              letterSpacing: "0.15em",
             }}
           >
-            Du 22 au 24 août à Larbey
-          </motion.h3>
+            21 - 23 août · Larbey, Landes
+          </motion.p>
 
           <motion.h2
-            className="text-2xl md:text-4xl text-white font-bold mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 3.5 }}
+            className="font-poppins font-black text-white text-center mb-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              fontSize: "clamp(1.1rem, 3vw, 2rem)",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+              textShadow: "0 2px 20px rgba(0,0,0,0.5)",
+            }}
           >
-            Viens passer le meilleur week-end de l'été !
+            Viens passer le meilleur
+            <br className="hidden sm:block" /> week-end de l'été !
           </motion.h2>
 
           <motion.div
@@ -174,8 +188,12 @@ export default function Home() {
 
         {/* Scrolling Artist Banner */}
         <div
-          className="w-full bg-black/40 backdrop-blur-sm py-6 overflow-hidden"
-          style={{ backgroundColor: "rgba(var(--color-background-rgb), 0.2)" }}
+          className="w-full py-5 overflow-hidden"
+          style={{
+            backgroundColor: "rgba(var(--color-primary-rgb), 0.12)",
+            backdropFilter: "blur(8px)",
+            borderTop: "1px solid rgba(var(--color-primary-rgb), 0.25)",
+          }}
         >
           <div className="marquee-container">
             <motion.div
@@ -184,7 +202,14 @@ export default function Home() {
               transition={{ delay: 0.5 }}
             >
               <div className="marquee-content">
-                <span className="text-2xl md:text-3xl text-white font-magic tracking-wider">
+                <span
+                  className="font-poppins font-bold tracking-widest uppercase"
+                  style={{
+                    fontSize: "clamp(0.75rem, 2vw, 1rem)",
+                    color: "var(--color-primary)",
+                    letterSpacing: "0.12em",
+                  }}
+                >
                   {artistsString}
                 </span>
               </div>

@@ -1,72 +1,125 @@
 /* Typography styles */
 
-/* Base text styles */
 .text-base {
-  @apply font-brixton text-text leading-relaxed;
+  @apply font-brixton leading-relaxed;
+  color: var(--color-text);
 }
 
-/* Heading styles */
+/* Heading base */
 .heading {
-  @apply font-magic text-primary;
-  text-shadow: 0 0 5px rgba(165, 30, 37, 0.3),
-               0 0 10px rgba(165, 30, 37, 0.2),
-               0 0 15px rgba(165, 30, 37, 0.1);
+  @apply font-poppins;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .heading-1 {
-  @apply heading text-4xl md:text-5xl font-bold mb-8;
+  @apply heading;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 2rem;
 }
 
 .heading-2 {
-  @apply heading text-2xl md:text-3xl font-bold mb-6;
+  @apply heading;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  margin-bottom: 1.5rem;
 }
 
 .heading-3 {
-  @apply heading text-xl md:text-2xl font-bold mb-4;
+  @apply heading;
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  margin-bottom: 1rem;
 }
 
 .heading-4 {
-  @apply heading text-lg md:text-xl font-bold mb-3;
+  @apply heading;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  margin-bottom: 0.75rem;
 }
 
-/* Subtitle styles */
+/* Subtitle */
 .subtitle {
-  @apply text-lg md:text-xl font-brixton font-medium text-accent mb-4;
+  font-size: 1.1rem;
+  font-family: 'Brixton', sans-serif;
+  font-weight: 500;
+  color: var(--color-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
 }
 
-/* Paragraph styles */
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* Paragraph */
 .paragraph {
-  @apply text-base md:text-lg font-brixton text-text leading-relaxed mb-4;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  font-family: 'Brixton', sans-serif;
+  color: var(--color-text);
+  margin-bottom: 1rem;
 }
 
-/* Card title styles */
+/* Card title */
 .card-title {
-  @apply text-xl font-bold text-primary mb-2;
+  @apply font-poppins font-bold;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
 }
 
-/* Section title with glow effect */
+/* Section title */
 .section-title {
-  @apply text-4xl md:text-5xl font-bold mb-8 text-center font-magic text-primary;
-  text-shadow: 0 0 10px rgba(165, 30, 37, 0.5),
-               0 0 20px rgba(165, 30, 37, 0.3),
-               0 0 30px rgba(165, 30, 37, 0.1);
+  @apply heading;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-/* Glow effect for text */
+/* Glow text effect */
 .text-glow {
-  text-shadow: 0 0 10px rgba(165, 30, 37, 0.5),
-               0 0 20px rgba(165, 30, 37, 0.3),
-               0 0 30px rgba(165, 30, 37, 0.1);
+  text-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.4),
+               0 0 40px rgba(var(--color-primary-rgb), 0.15);
 }
 
 /* Navigation link */
 .nav-link {
-  @apply px-4 py-2 text-text hover:text-primary transition-colors duration-300;
-  font-family: 'Brixton', sans-serif;
-  font-weight: 500;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
 }
 
-/* Primary button */
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* Button */
 .btn-primary {
-  @apply px-6 py-3 bg-primary text-light rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 font-brixton;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  border-radius: 9999px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.35);
 }

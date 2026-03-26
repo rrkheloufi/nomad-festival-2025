@@ -127,7 +127,7 @@ export const artists: Artist[] = [
     style: "Indie - Pop",
     image: "/artists/riva-leon.jpg",
     description:
-      "Chanteuse et compositrice, Riva Leon sort ses propres chansons depuis 2020. L'intimité palpable de sa musique n'a rien d'un hasard : ses morceaux naissent d'abord seule dans sa chambre, à la guitare ou au piano.\n\nLa production douce, parfois entraînante, de ses titres indie pop évoque des artistes comme Lizzy McAlpine, JP Saxe ou Taylor Swift — qui figurent d'ailleurs parmi ses inspirations.\n\nLa mélancolie et l'espoir sont des thèmes récurrents dans son univers musical, portés par sa voix douce et apaisante. À chaque projet, Riva Leon dévoile une nouvelle facette de sa créativité. En ce moment, elle écrit de nombreuses nouvelles chansons et explore également d'autres genres musicaux.",
+      "Chanteuse et compositrice, Riva Leon sort ses propres chansons depuis 2020. L'intimité palpable de sa musique n'a rien d'un hasard : ses morceaux naissent d'abord seule dans sa chambre, à la guitare ou au piano.\n\nLa production douce, parfois entraînante, de ses titres indie pop évoque des artistes comme Lizzy McAlpine, JP Saxe ou Taylor Swift - qui figurent d'ailleurs parmi ses inspirations.\n\nLa mélancolie et l'espoir sont des thèmes récurrents dans son univers musical, portés par sa voix douce et apaisante. À chaque projet, Riva Leon dévoile une nouvelle facette de sa créativité. En ce moment, elle écrit de nombreuses nouvelles chansons et explore également d'autres genres musicaux.",
     spotify:
       "https://open.spotify.com/intl-de/artist/6on9aFPA41KLlYSKTEVyL4?si=-lDqjwZPQfK0pW75koIKhQ",
   },

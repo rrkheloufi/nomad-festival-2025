@@ -21,6 +21,7 @@ export default {
         crimson: ['Crimson Text', ...defaultTheme.fontFamily.serif],
         magic: ['Letter Magic', ...defaultTheme.fontFamily.sans],
         brixton: ['Brixton', ...defaultTheme.fontFamily.sans],
+        poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
       animation: {
         'gradient': 'gradient 8s linear infinite',

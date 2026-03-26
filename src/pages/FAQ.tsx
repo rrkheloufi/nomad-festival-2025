@@ -60,7 +60,7 @@ const faqs = [
   {
     question: "J'ai envie de me produire au Nomad comment faire ?",
     answer:
-      "La programmation musicale est complète pour cette année mais n'hésite pas à nous contacter sur instagram ou sur notre adresse mail (nomad.festivalfr@gmail.com) pour la prochaine édition. Nous sommes toujours à la recherche de nouveaux/nouvelles artistes motivé.es pour participer au projet !",
+      "La programmation musicale est complète pour cette année mais n'hésite pas à nous contacter sur instagram ou sur notre adresse mail (festival.nomadfr@gmail.com) pour la prochaine édition. Nous sommes toujours à la recherche de nouveaux/nouvelles artistes motivé.es pour participer au projet !",
   },
   {
     question:
@@ -136,10 +136,10 @@ export default function FAQ() {
             <p className="text-festival-light text-lg mb-4">
               Contacte-nous par email à :
               <a
-                href="mailto:nomad.festivalfr@gmail.com"
+                href="mailto:festival.nomadfr@gmail.com"
                 className="text-primary hover:text-white transition-colors duration-300 ml-2"
               >
-                nomad.festivalfr@gmail.com
+                festival.nomadfr@gmail.com
               </a>
             </p>
           </motion.div>
