@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import YouTube from "react-youtube";
 import { Button } from "../components/Button";
+import { useTheme } from "../context/ThemeContext";
 import "../styles/Home.css";
 
 export default function Home() {
+  const { themeMode } = useTheme();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -117,18 +119,26 @@ export default function Home() {
             }}
           >
             <motion.img
-              src="/logos/logo_nomad.png"
+              src={themeMode === "dark" ? "/logos/logo_light.png" : "/logos/logo_dark.png"}
               alt="Nomad Festival"
               className="object-contain"
               style={{
-                filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))",
+                filter: themeMode === "dark"
+                  ? "drop-shadow(0 0 10px rgba(250, 195, 70, 0.5))"
+                  : "drop-shadow(0 0 10px rgba(255, 15, 170, 0.5))",
               }}
               animate={{
-                filter: [
-                  "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))",
-                  "drop-shadow(0 0 30px rgba(255, 255, 255, 0.5))",
-                  "drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))",
-                ],
+                filter: themeMode === "dark"
+                  ? [
+                      "drop-shadow(0 0 10px rgba(250, 195, 70, 0.5))",
+                      "drop-shadow(0 0 30px rgba(250, 195, 70, 0.7))",
+                      "drop-shadow(0 0 10px rgba(250, 195, 70, 0.5))",
+                    ]
+                  : [
+                      "drop-shadow(0 0 10px rgba(255, 15, 170, 0.5))",
+                      "drop-shadow(0 0 30px rgba(255, 15, 170, 0.7))",
+                      "drop-shadow(0 0 10px rgba(255, 15, 170, 0.5))",
+                    ],
               }}
               transition={{
                 duration: 5,
@@ -174,7 +184,7 @@ export default function Home() {
             transition={{ delay: 3.5 }}
           >
             <a
-              href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2025?_gl=1%2aclwyfd%2a_gcl_au%2aMTUxMjkzNDAzNi4xNzQyNTUxNjcy"
+              href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2026"
               target="_blank"
               rel="noopener noreferrer"
             >

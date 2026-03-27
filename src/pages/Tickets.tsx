@@ -38,7 +38,7 @@ export default function Tickets() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl font-bold text-festival-primary mb-8 text-center heading-1 py-4 md:py-8">
-            Billetterie Nomad Festival 2025
+            Billetterie Nomad Festival 2026
           </h1>
 
           <div className="prose prose-lg text-festival-light max-w-none mb-12">
@@ -99,7 +99,7 @@ export default function Tickets() {
 
               <div className="flex justify-center w-full">
                 <a
-                  href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2025"
+                  href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2026"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full md:w-auto"
@@ -144,7 +144,7 @@ export default function Tickets() {
                 </div>
                 <div className="flex justify-center w-full">
                   <a
-                    href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2025"
+                    href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2026"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full md:w-auto"
@@ -189,7 +189,7 @@ export default function Tickets() {
                 </div>
                 <div className="flex justify-center w-full">
                   <a
-                    href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2025"
+                    href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2026"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full md:w-auto"
@@ -235,7 +235,7 @@ export default function Tickets() {
                 </div>
                 <div className="flex justify-center w-full">
                   <a
-                    href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2025"
+                    href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2026"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full md:w-auto"
@@ -279,7 +279,7 @@ export default function Tickets() {
                 </div>
                 <div className="flex justify-center w-full">
                   <a
-                    href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2025"
+                    href="https://www.helloasso.com/associations/nomad-festival/evenements/billetterie-nomad-festival-2026"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full md:w-auto"
