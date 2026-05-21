@@ -10,6 +10,7 @@ import Edition2024 from "./pages/editions/Edition2024";
 import Edition2025 from "./pages/editions/Edition2025";
 import FAQ from "./pages/FAQ";
 import Home from "./pages/Home";
+import Program2026 from "./pages/Program2026";
 import Tickets from "./pages/Tickets";
 
 export function AppRoutes() {
@@ -18,7 +19,7 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/shop" element={<ComingSoon title="Boutique" />} />
-      <Route path="/program" element={<ComingSoon title="Prog' 2026" />} />
+      <Route path="/program" element={<Program2026 />} />
       <Route path="/tickets" element={<Tickets />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/contact" element={<Contact />} />
