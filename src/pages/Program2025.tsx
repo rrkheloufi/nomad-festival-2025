@@ -20,7 +20,7 @@ export const artists: Artist[] = [
   {
     name: "Fabrice et Bouée 2 Sauvetaj",
     style: "Rap Rigolo",
-    image: "/artists/fabrice-et-bouee-2-sauvetaj.png",
+    image: "/artists_2025/fabrice-et-bouee-2-sauvetaj.png",
     spotify: "https://open.spotify.com/intl-fr/artist/6LcvylIR9VFoZ01266BAno",
     description:
       "De retour sur scène après une année pleine de nouveaux projets, Fabrice et Bouée 2 Sauvetaj reviennent en exclusivité sur la scène du Nomad Festival.\n\nComme à leur habitude, ils viennent dans le but de délivrer des messages forts et engagés.\n\nRamenez vos casquettes, branchez vos téléphones et préparez-vous à vivre une expérience inoubliable.",
@@ -28,21 +28,21 @@ export const artists: Artist[] = [
   {
     name: "i20",
     style: "Ambient, Musique électronique, Impro piano",
-    image: "/artists/i20.png",
+    image: "/artists_2025/i20.png",
     description:
       "Voyage musical semi improvisé, envolées de piano sur des mots volés, mélange de larmes de joie et de tristesse.\n\nLes moments partent, les souvenirs restent.",
   },
   {
     name: "Jaja",
     style: "DJ set - Shatta & Baile Funk",
-    image: "/artists/jaja.jpg",
+    image: "/artists_2025/jaja.jpg",
     description:
       "Jaja est une \"BabyDj\" qui aime danser et chanter sur des rythmes Shatta et Baile Funk !\n\nEn tant que passionnée de ces genres musicaux, elle tient à souligner l'importance de reconnaître leurs origines et leur contexte socio-politique. Ces styles sont nés dans des communautés marginalisées et portent en eux des messages de résistance et d'affirmation culturelle.\n\nElle souhaite partager cette musique avec respect et conscience, en célébrant sa richesse et sa diversité pour que la musique nous unisse et nous fasse vibrer !",
   },
   {
     name: "Solaal",
     style: "Rap - Influences électroniques et rock",
-    image: "/artists/solaal.jpg",
+    image: "/artists_2025/solaal.jpg",
     spotify:
       "https://open.spotify.com/intl-fr/artist/2We5DMXAZYMivza4uzZNvJ?si=7J6HjkwGTN6lRHpIUEuLGQ",
     youtube: "https://www.youtube.com/@solaal_music",
@@ -53,7 +53,7 @@ export const artists: Artist[] = [
   {
     name: "Zita Nova",
     style: "DJ set - Drum'n'bass",
-    image: "/artists/zita-nova.jpg",
+    image: "/artists_2025/zita-nova.jpg",
     soundcloud: "https://soundcloud.com/laurinef-1",
     instagram: "https://www.instagram.com/zita.nova/",
     description:
@@ -62,7 +62,7 @@ export const artists: Artist[] = [
   {
     name: "UNBREAKHER",
     style: "Reprises Rock/Hard Rock",
-    image: "/artists/unbreakher.jpg",
+    image: "/artists_2025/unbreakher.jpg",
     instagram: "https://www.instagram.com/unbreakher/",
     facebook: "https://www.facebook.com/unbreakher/",
     description:
@@ -71,7 +71,7 @@ export const artists: Artist[] = [
   {
     name: "2concevable",
     style: "Reprises musicales en duo",
-    image: "/artists/2concevable.jpg",
+    image: "/artists_2025/2concevable.jpg",
     youtube: "https://youtu.be/3seMwPC87eA?si=OlII-w1Bo-KRRLc2",
     description:
       "2concevable, c'est l'histoire de ceux qu'on n'attendait pas.\n\nEt pourtant… Ils seront là, au Nomad Festival.\nInimaginable ? Peut-être.\nMais vrai.\n\nPréparez-vous à l'inattendu (ou pas).\nQue vous ont-ils préparé ? Le mystère reste entier.",
@@ -79,14 +79,14 @@ export const artists: Artist[] = [
   {
     name: "Falou Collective",
     style: "Folk / Blues et Soul",
-    image: "/artists/falou-collective.jpg",
+    image: "/artists_2025/falou-collective.jpg",
     description:
       "Les Morfalous reviennent trois fois plus nombreux pour former le Falou Collective !\n\nÇa folk, ça blues et ça soul, ça s'échange les instruments, ça chante en chœur, et c'est pas fâché avec le plaisir.",
   },
   {
     name: "Grry",
     style: "Deep groovy techno",
-    image: "/artists/grry.jpeg",
+    image: "/artists_2025/grry.jpeg",
     soundcloud: "https://on.soundcloud.com/WFVGUfcS5QysUaXXA",
     description:
       "Des rythmes bruts mêlés à des boucles hypnotiques, pour construire un moment de transe douce et collective.",
@@ -94,7 +94,7 @@ export const artists: Artist[] = [
   {
     name: "Superinventur",
     style: "Rap, Cumbia, Baile Funk",
-    image: "/artists/superinventur.jpg",
+    image: "/artists_2025/superinventur.jpg",
     spotify:
       "https://open.spotify.com/artist/5U42u2S2UByw15VG2Zb4cd?si=PuvuGsz6QpC8OqDgu0bRsw",
     instagram:
@@ -106,7 +106,7 @@ export const artists: Artist[] = [
   {
     name: "Ginger 808",
     style: "DJ set - Drum'n'bass roller, UK, neuro",
-    image: "/artists/ginger-808.jpg",
+    image: "/artists_2025/ginger-808.jpg",
     soundcloud: "https://on.soundcloud.com/neQrBWj2gVsRAj4H6",
     instagram: "https://www.instagram.com/ginger.808",
     linktree: "https://linktr.ee/ginger808",
@@ -116,7 +116,7 @@ export const artists: Artist[] = [
   {
     name: "Lulz",
     style: "Dj set - Trance/Techno",
-    image: "/artists/lulz.jpg",
+    image: "/artists_2025/lulz.jpg",
     soundcloud: "https://soundcloud.com/lulz909",
     instagram: "https://www.instagram.com/lulz_909/",
     description:
@@ -125,7 +125,7 @@ export const artists: Artist[] = [
   {
     name: "Riva Leon",
     style: "Indie - Pop",
-    image: "/artists/riva-leon.jpg",
+    image: "/artists_2025/riva-leon.jpg",
     description:
       "Chanteuse et compositrice, Riva Leon sort ses propres chansons depuis 2020. L'intimité palpable de sa musique n'a rien d'un hasard : ses morceaux naissent d'abord seule dans sa chambre, à la guitare ou au piano.\n\nLa production douce, parfois entraînante, de ses titres indie pop évoque des artistes comme Lizzy McAlpine, JP Saxe ou Taylor Swift - qui figurent d'ailleurs parmi ses inspirations.\n\nLa mélancolie et l'espoir sont des thèmes récurrents dans son univers musical, portés par sa voix douce et apaisante. À chaque projet, Riva Leon dévoile une nouvelle facette de sa créativité. En ce moment, elle écrit de nombreuses nouvelles chansons et explore également d'autres genres musicaux.",
     spotify:
@@ -134,14 +134,14 @@ export const artists: Artist[] = [
   {
     name: "Garage Band",
     style: "Rock, Pop-Rock, Funk",
-    image: "/artists/garage_band.png",
+    image: "/artists_2025/garage_band.png",
     description:
       "Salut la compagnie ! Le Garage Band, tel Ulysse, vient réparer tous vos problèmes du quotidien.\n\nLaissez-nous vous raconter quelque chose sur nous, que vous savez sûrement déjà. \n\nEmbarquez dans de vastes trous noirs à bord de nos petits sous-marins, vous vous sentirez comme des femmes riches le temps d'un repas. \nAlors n'ayez peur de rien, pas même des reptiles, et dansez aux rythmes des outils du Garage.",
   },
   {
     name: "Axolotox",
     style: "DJ set - Pop / Disco",
-    image: "/artists/axolotox.jpg",
+    image: "/artists_2025/axolotox.jpg",
     instagram: "https://www.instagram.com/__axolotox__/",
     description:
       "Axolotox en une phrase : \"hating pop music doesn't make you deep\"\n\nBaby DJ depuis 2025, j'ai une passion pop culture et une obsession comédies musicales.\n\nmon but: s'amuser entre copains et copines, tout simplement.\n\nGirly pop, cunty music, female rage, musical theatre, party hits, & more !!",
@@ -149,7 +149,7 @@ export const artists: Artist[] = [
   {
     name: "Luluze & Friendz",
     style: "Pop rock alternative",
-    image: "/artists/luluze&friendz.jpg",
+    image: "/artists_2025/luluze&friendz.jpg",
     instagram: "@luluzeeeee",
     description:
       "Luluze a réuni ses musiciens préférés (ses amis) pour venir vous chanter de jolies balades popau Nomad Festival. Ils vous attendent pour un moment coloré et joyeux : un concert fait maison plein de bonne humeur et d'amitié",

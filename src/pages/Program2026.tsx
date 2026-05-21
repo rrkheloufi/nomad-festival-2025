@@ -91,7 +91,7 @@ const artists: Artist[] = [
     image: "/artists_2026/Ba-Z.webp",
     instagram: "https://www.instagram.com/ba_z_zik",
     description:
-      'Based, l\'anglicisme formé à partir de l\'adjectif "basé", synonyme d\'en place, de pertinent et qui donne son nom au duo formé par Limace et Julio (Ba-Z), est la seule teinte d\'égo trip du projet.\n\nPratiquant une écriture auto-dérisoire, tantôt nihiliste, tantôt poétique, tantôt amusée et sans complexe, c\'est à l\'intersection de leurs univers musicaux respectifs qu\'ils entendent faire une forme nouvelle de rap alternatif.\n\nMêlant le rap au rock, la pop au punk, et passant par des rythmes et des sonorités empruntées à la musique électro, Ba-Z s\'appréhende par sa singularité et sa multiplicité d\'écriture, toujours portée vers la scène, vers le public.',
+      "Based, l'anglicisme formé à partir de l'adjectif \"basé\", synonyme d'en place, de pertinent et qui donne son nom au duo formé par Limace et Julio (Ba-Z), est la seule teinte d'égo trip du projet.\n\nPratiquant une écriture auto-dérisoire, tantôt nihiliste, tantôt poétique, tantôt amusée et sans complexe, c'est à l'intersection de leurs univers musicaux respectifs qu'ils entendent faire une forme nouvelle de rap alternatif.\n\nMêlant le rap au rock, la pop au punk, et passant par des rythmes et des sonorités empruntées à la musique électro, Ba-Z s'appréhende par sa singularité et sa multiplicité d'écriture, toujours portée vers la scène, vers le public.",
   },
   {
     name: "Jaja",
@@ -100,7 +100,7 @@ const artists: Artist[] = [
     day: "samedi",
     image: "/artists_2026/Copie de Jaja-new-picture.webp",
     description:
-      'Jaja revient avec un set qui va faire trembler la piste sur des rythmes de Shatta, Baile Funk et Reggaeton. Et cette fois, vous la connaissez déjà, alors vous savez ce qui vous attend !!\n\n"Baby Dj" et passionnée de ces genres musicaux, elle tient à souligner l\'importance de reconnaître leurs origines et leurs contextes sociopolitiques. Ces styles sont nés dans des communautés marginalisées et portent en eux des messages de résistance et d\'affirmation culturelle.\n\nPassionnée par ces musiques venues des quatre coins du monde, elle les joue avec amour et respect pour les cultures qui les ont fait naître.',
+      "Jaja revient avec un set qui va faire trembler la piste sur des rythmes de Shatta, Baile Funk et Reggaeton. Et cette fois, vous la connaissez déjà, alors vous savez ce qui vous attend !!\n\n\"Baby Dj\" et passionnée de ces genres musicaux, elle tient à souligner l'importance de reconnaître leurs origines et leurs contextes sociopolitiques. Ces styles sont nés dans des communautés marginalisées et portent en eux des messages de résistance et d'affirmation culturelle.\n\nPassionnée par ces musiques venues des quatre coins du monde, elle les joue avec amour et respect pour les cultures qui les ont fait naître.",
   },
   {
     name: "Les J'ai pas tout compris",
@@ -149,7 +149,7 @@ const artists: Artist[] = [
     image: "/artists_2026/HaDJet27.webp",
     instagram: "https://www.instagram.com/hadjet27",
     description:
-      "HaDJet27 est un disc-jokey instable ayant un penchant très fort pour les breaks de batterie et les basses qui viennent gratouiller l'arrière de ton cerveau. Il est 100% impossible de ne pas réaliser au moins une \"bass face\" durant un de ses sets. Satisfait ou remboursé.",
+      'HaDJet27 est un disc-jokey instable ayant un penchant très fort pour les breaks de batterie et les basses qui viennent gratouiller l\'arrière de ton cerveau. Il est 100% impossible de ne pas réaliser au moins une "bass face" durant un de ses sets. Satisfait ou remboursé.',
   },
 ];
 
@@ -175,13 +175,16 @@ export default function Program2026() {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: "easeOut" },
+    },
   };
 
   return (
     <div className="min-h-screen pt-20 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -189,7 +192,9 @@ export default function Program2026() {
           transition={{ duration: 0.7 }}
           className="text-center pt-10 pb-8"
         >
-          <p className="subtitle mb-2 tracking-widest uppercase text-sm">Nomad Festival</p>
+          <p className="subtitle mb-2 tracking-widest uppercase text-sm">
+            Nomad Festival
+          </p>
           <h1 className="heading-1 drop-shadow-glow">Programmation 2026</h1>
         </motion.div>
 
@@ -214,7 +219,10 @@ export default function Program2026() {
                 className="relative z-10 px-7 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-colors duration-300 capitalize"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  color: activeDay === day ? "var(--color-dark)" : "var(--color-text)",
+                  color:
+                    activeDay === day
+                      ? "var(--color-dark)"
+                      : "var(--color-text)",
                 }}
               >
                 {activeDay === day && (
@@ -245,12 +253,15 @@ export default function Program2026() {
               <motion.div
                 key={artist.name}
                 variants={cardVariants}
-                className="group cursor-pointer"
+                className="group cursor-pointer h-full"
                 onClick={() => setSelectedArtist(artist)}
               >
                 <div
-                  className="relative overflow-hidden artist-card"
-                  style={{ background: "rgba(var(--color-dark-rgb), 0.5)", borderRadius: 0 }}
+                  className="relative overflow-hidden artist-card h-full flex flex-col"
+                  style={{
+                    background: "rgba(var(--color-dark-rgb), 0.5)",
+                    borderRadius: 0,
+                  }}
                 >
                   {/* Photo */}
                   <div className="aspect-[4/5] relative overflow-hidden">
@@ -274,7 +285,8 @@ export default function Program2026() {
                         className="text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm"
                         style={{
                           background: "rgba(var(--color-primary-rgb), 0.2)",
-                          border: "1px solid rgba(var(--color-primary-rgb), 0.45)",
+                          border:
+                            "1px solid rgba(var(--color-primary-rgb), 0.45)",
                           color: "var(--color-light)",
                           fontFamily: "'Poppins', sans-serif",
                         }}
@@ -325,7 +337,10 @@ export default function Program2026() {
                     </p>
                     <p
                       className="text-xs mt-2 font-semibold tracking-wide uppercase opacity-60 group-hover:opacity-100 transition-opacity duration-200"
-                      style={{ color: "rgba(250, 230, 235, 1)", fontFamily: "'Poppins', sans-serif" }}
+                      style={{
+                        color: "rgba(250, 230, 235, 1)",
+                        fontFamily: "'Poppins', sans-serif",
+                      }}
                     >
                       En savoir plus →
                     </p>
@@ -348,7 +363,10 @@ export default function Program2026() {
             transition={{ duration: 0.25 }}
             onClick={() => setSelectedArtist(null)}
             className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
-            style={{ background: "rgba(0,0,0,0.82)", backdropFilter: "blur(6px)" }}
+            style={{
+              background: "rgba(0,0,0,0.82)",
+              backdropFilter: "blur(6px)",
+            }}
           >
             <motion.div
               key="modal"
@@ -357,13 +375,18 @@ export default function Program2026() {
               exit={{ y: "100%", opacity: 0 }}
               transition={{ type: "spring", stiffness: 340, damping: 38 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full sm:max-w-5xl artist-dialog overflow-hidden rounded-t-[20px] sm:rounded-2xl"
+              className="relative w-full sm:max-w-5xl overflow-hidden rounded-t-[20px] sm:rounded-2xl"
               style={{
                 backgroundColor: "var(--color-background)",
                 maxHeight: "92dvh",
+                border: "1px solid rgba(var(--color-primary-rgb), 0.25)",
+                boxShadow: "0 24px 64px rgba(0, 0, 0, 0.5)",
               }}
             >
-              <div className="flex flex-col sm:flex-row overflow-y-auto custom-scrollbar" style={{ maxHeight: "92dvh" }}>
+              <div
+                className="flex flex-col sm:flex-row overflow-y-auto custom-scrollbar"
+                style={{ maxHeight: "92dvh" }}
+              >
                 {/* Image */}
                 <div className="w-full sm:w-2/5 sm:min-h-full flex-shrink-0 relative">
                   <div className="aspect-[4/3] sm:aspect-auto sm:h-full relative">
@@ -414,7 +437,10 @@ export default function Program2026() {
 
                   <p
                     className="text-xs mb-5 opacity-60"
-                    style={{ color: "var(--color-text)", fontFamily: "'Poppins', sans-serif" }}
+                    style={{
+                      color: "var(--color-text)",
+                      fontFamily: "'Poppins', sans-serif",
+                    }}
                   >
                     {selectedArtist.covers}
                   </p>
@@ -445,8 +471,12 @@ export default function Program2026() {
                   backgroundColor: "var(--color-background)",
                   color: "var(--color-text)",
                 }}
-                onMouseOver={(e) => (e.currentTarget.style.color = "var(--color-primary)")}
-                onMouseOut={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.color = "var(--color-primary)")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.color = "var(--color-text)")
+                }
               >
                 ✕
               </button>

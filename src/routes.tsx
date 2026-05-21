@@ -10,6 +10,7 @@ import Edition2024 from "./pages/editions/Edition2024";
 import Edition2025 from "./pages/editions/Edition2025";
 import FAQ from "./pages/FAQ";
 import Home from "./pages/Home";
+import Program2025 from "./pages/Program2025";
 import Program2026 from "./pages/Program2026";
 import Tickets from "./pages/Tickets";
 
@@ -26,6 +27,7 @@ export function AppRoutes() {
       <Route path="/editions/2023" element={<Edition2023 />} />
       <Route path="/editions/2024" element={<Edition2024 />} />
       <Route path="/editions/2025" element={<Edition2025 />} />
+      <Route path="/editions/2025/artistes" element={<Program2025 />} />
       <Route path="/edition-2022" element={<Edition2022 />} />
       <Route path="/buttons" element={<ButtonPage />} />
       <Route path="/covoiturage" element={<Covoiturage />} />
